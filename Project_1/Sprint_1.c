@@ -26,7 +26,7 @@ int main(void)
 				}
 				else
 				{
-					printf("Exiting");
+					printf("Exiting\n");
 					break;
 				}
 			}
