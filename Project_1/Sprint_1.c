@@ -28,7 +28,7 @@ int main(void)
 				}
 				else if(strcmp(str1, exit) == 0)
 				{
-					printf("Exiting");
+					printf("Exiting\n");
 					break;
 				}
 				else
