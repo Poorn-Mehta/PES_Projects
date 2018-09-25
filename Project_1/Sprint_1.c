@@ -14,20 +14,27 @@ int main(void)
 {
 	char str1[10];
 	printf("Welcome");
+	printf("\nType help to get information about using it");
 	while(1)
 	{
 		printf("\nEnter Command: ");
-		scanf("%s",str1);
-			if((strcmp(str1, help) == 0) || (strcmp(str1, exit) == 0))
+		scanf("%[^\n]s",str1);
+			if((strcmp(str1, help) == 0) || (strcmp(str1, exit) == 0) || (strcmp(str1, "help exit") == 0))
 			{
 				if(strcmp(str1, help) == 0)
 				{
-					printf("You have typed help");
+					printf("Enter the name of command after help\n");
+					printf("For example - type: help exit\n");
 				}
-				else
+				else if(strcmp(str1, exit) == 0)
 				{
 					printf("Exiting");
 					break;
+				}
+				else
+				{
+					printf("\n Help on Exit Command");
+					printf("\n Just type in 'exit' to close");
 				}
 			}
 			else
