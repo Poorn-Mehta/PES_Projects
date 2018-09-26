@@ -43,10 +43,14 @@ int main(void)
 							break;
 						}
 					}
-					if(strcmp(str2, "exit"))
+					if(strcmp(str2, "exit") == 0)
 					{
-						printf("\n Help on Exit Command");
+						printf("\n\n Help on Exit Command");
 						printf("\n Just type in 'exit' to close");
+					}
+					else
+					{
+						printf("\n Command Not Recognized");
 					}
 				}
 			}
