@@ -18,7 +18,7 @@ int main(void)
 	while(1)
 	{
 		printf("\nEnter Command: ");
-		scanf("%[^\n]s",str1);
+		scanf("%s",str1);
 			if((strcmp(str1, help) == 0) || (strcmp(str1, exit) == 0) || (strcmp(str1, "help exit") == 0))
 			{
 				if(strcmp(str1, help) == 0)
