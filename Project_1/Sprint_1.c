@@ -38,6 +38,7 @@ int main(void)
 					for(str_pos = 5;;str_pos ++)
 					{
 						str2[str_pos2] = str1[str_pos];
+						str_pos2 += 1;
 						if(str1[str_pos] == 0)
 						{
 							break;
