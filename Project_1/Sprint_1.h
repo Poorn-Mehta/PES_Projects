@@ -11,6 +11,7 @@
 #define help	"help"
 #define exit	"exit"
 
-
+char str1[255], str2[255];
+unsigned char str_pos = 0;
 
 #endif /* SPRINT_1_H_ */

@@ -12,8 +12,6 @@
 
 int main(void)
 {
-	char str1[255], str2[255];
-	unsigned char str_pos = 0;
 	printf("Welcome\n");
 	printf("\nType help to get information about using it");
 	while(1)
