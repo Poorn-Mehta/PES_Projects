@@ -17,4 +17,8 @@ extern Help help, *help_ptr;
 extern char *ptr2, check[20], help_compare[20], help_print[500];
 extern uint8_t j, k;
 
+void Help_Init(void);
+void Help_Lookup(void);
+
+
 #endif
