@@ -5,7 +5,8 @@
 #include <stdint.h>
 #include <string.h>
 
-char input[50], compare[50];
-uint8_t i;
+
+extern char input[50], compare[50];
+extern uint8_t i;
 
 #endif
