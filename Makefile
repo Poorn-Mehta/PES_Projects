@@ -1,5 +1,2 @@
-CC=gcc
-CFLAGS=-I.
-
-Test: tmp.o
-     $(CC) -o Test tmp.o
+tst: tst.c
+     gcc -o tst tst.c -I.
