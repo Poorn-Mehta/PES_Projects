@@ -1,2 +1,2 @@
 tst: tst.c
-     gcc -o tst tst.c -I.
+\tgcc -o tst tst.c -I.
