@@ -1,2 +1,2 @@
-tst: tst.c
-	gcc -o tst tst.c -I.
+tst: tmp.c
+	gcc -o tst tmp.c -I.
