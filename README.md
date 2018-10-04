@@ -11,6 +11,10 @@ Sincerely,
 
 Team (Rushi and Poorn)
 
+Update - 1PM - 10/4/2018
+
+Everything is working perfectly on terminal as well as windows IDE. Only patternverify function is yet to deploy. Time was consumed in developing a smooth User Interface. 
+
 Update on Project as of 10/4/2018
 
 2 things are yet to implement - pattern verify and bound checking. Raw functions are ready.
@@ -27,4 +31,6 @@ It accepts only valid arguments in all input cases (rejecting non decimal, non h
 Also, it accepts arguments and commands in two formats:
 (1) If you just type command which accepts arguments, and then press enter, it will keep on prompting untill it has received all valid parameters
 (2) You can even call the function with parameters, by simply putting space in between - such as memwrite <address> <value>
+
+
 
