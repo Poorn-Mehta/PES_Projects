@@ -7,18 +7,21 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = Help.h Main.h
+_DEPS = Help.h Main.h Input.h Memalloc.h Memfree.h Meminv.h Memread.h Memwrite.h Patterngen.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Main.o Help.o 
+_OBJ = Help.o Main.o Input.o Memalloc.o Memfree.o Meminv.o Memread.o Memwrite.o Patterngen.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-Main: $(OBJ)
+Project: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	
+Test: ./Project testing
+	./Project < testing
 
 .PHONY: clean
 
