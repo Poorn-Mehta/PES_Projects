@@ -10,3 +10,5 @@ Thanks.
 Sincerely,
 
 Team (Rushi and Poorn)
+
+$ find . \( -name "*.c" -o -name "*.h" \)  -exec cat {} \; >> output.txt
