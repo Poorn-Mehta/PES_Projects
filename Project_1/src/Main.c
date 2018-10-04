@@ -65,7 +65,7 @@ void Detailed_Output(void)
 {
 	while(1)
 	{
-		printf("Do you want to use Detailed information?\n");
+		printf("\nDo you want to use Detailed information?\n");
 		printf("\n Type Y or y to accept, type N or n to reject: ");
 		fgets(m_print, 50, stdin);
 		printf("\n");
