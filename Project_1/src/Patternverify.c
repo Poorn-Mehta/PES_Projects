@@ -1,13 +1,14 @@
-#include "Patterngen.h"
+#include "Patternverify.h"
 
 //add, len, seed, max
 
 uint32_t *mem_ptr2, mem_i;
 float random_number, seed;
 uint32_t max, range, random_value, *pattern_original;
+uint8_t verification_flag, verification_counter;
 clock_t t;
 
-void generator(void)
+void gen_verify(void)
 {
 	random_number = ((0.4353491074*seed) + 0.8173946121);
 	while(random_number > 1)
@@ -17,12 +18,17 @@ void generator(void)
 	random_number *= max;
 	random_value = (uint32_t)random_number;
 	printf("\n%x", random_value);
-	*mem_ptr2 = random_value;
+	if(*mem_ptr2 == random_value)
+	{
+		verification_counter += 1;
+	}
 	seed = random_number;
 }
 
-void patterngen(void)
+void patternverify(void)
 {
+	verification_flag = 0;
+	verification_counter = 0;
 	if(mem_ptr)
 	{
 		range = value2;
@@ -58,7 +64,6 @@ void patterngen(void)
 					clkbegin();
 					if(print)
 					{
-						printf("\nInformation BEFORE pattern generate operation\n\n");
 						printf("\nThe allocated addresses are as below:\n");
 						for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
 						{
@@ -74,21 +79,19 @@ void patterngen(void)
 					uint8_t counter;
 					for(counter = 0; counter < range; counter ++, mem_ptr2 ++)
 					{
-						generator();
+						gen_verify();
 					}
 					mem_ptr2 = pattern_original;
-					if(print)
+					if(verification_counter != range)
 					{
-						printf("\nInformation AFTER pattern generate operation\n\n");
-							printf("\nThe allocated addresses are as below:\n");
-						for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
-						{
-							printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
-						}
+						printf("\nPattern Verification Failed\n");
 					}
-					mem_ptr = mem_original;
+					else
+					{
+						printf("\nPattern Verified Successfully\n");
+					}
 					clkend();
-					printf("\nThanks for generating a pattern with psuedo random numbers...\n");
+					printf("\nThanks for verifying pattern...\n");
 				}
 			}
 		}

@@ -66,7 +66,7 @@ void Memalloc_Func(void)
 	{
 		value1 = 0;
 	}
-	printf("\n%ld Blocks have been allocated\n", value1);	
+	printf("\n%d Blocks have been allocated\n", value1);	
 }
 
 void Space_Memalloc_Func(void)
@@ -85,7 +85,7 @@ void Space_Memalloc_Func(void)
 		value = 0;
 		Command_Error();
 	}
-	printf("\n%ld Blocks have been allocated\n", value1);
+	printf("\n%d Blocks have been allocated\n", value);
 }
 
 void Memfree_Func(void)
@@ -244,31 +244,31 @@ void Patterngen_Func(void)
 {
 	if(relative_address)
 	{
-		printf("\nEnter the relative starting address of the memory location: ");
+		printf("\nEnter the relative starting address of the memory location in decimal: ");
 		hex_flag = 0;
 	}
 	else
 	{
-		printf("\nEnter the absolute starting address of the memory location: ");
+		printf("\nEnter the absolute starting address of the memory location in hex: ");
 		hex_flag = 1;
 	}
 	Valid_Integer_Input();
 	if(error_flag == 0)
 	{
 		value1 = value;
-		printf("\nEnter the number of 32bit numbers that you wish to generate: ");
+		printf("\nEnter the number of 32bit numbers that you wish to generate in decimal: ");
 		hex_flag = 0;
 		Valid_Integer_Input();
 		if(error_flag == 0)
 		{
 			value2 = value;
-			printf("\nEnter the Seed value of your choice: ");
+			printf("\nEnter the Seed value of your choice in decimal: ");
 			hex_flag = 0;
 			Valid_Integer_Input();
 			if(error_flag == 0)
 			{
 				value3 = value;
-				printf("\nEnter the Maximum value of generated psuedo random number(s): ");
+				printf("\nEnter the Maximum value of generated psuedo random number(s) in decimal: ");
 				hex_flag = 0;
 				Valid_Integer_Input();
 				if(error_flag == 0)
@@ -324,33 +324,41 @@ void Patternverify_Func(void)
 {
 	if(relative_address)
 	{
-		printf("\nEnter the relative starting address of the memory location: ");
+		printf("\nEnter the relative starting address of the memory location in decimal: ");
 		hex_flag = 0;
 	}
 	else
 	{
-		printf("\nEnter the absolute starting address of the memory location: ");
+		printf("\nEnter the absolute starting address of the memory location in hex: ");
 		hex_flag = 1;
 	}
 	Valid_Integer_Input();
-	//if error = 0
-	value1 = value;
-	printf("\nEnter the number of 32bit numbers that you wish to verify: ");
-	hex_flag = 0;
-	Valid_Integer_Input();
-	//if error = 0
-	value2 = value;
-	printf("\nEnter the original Seed value: ");
-	hex_flag = 0;
-	Valid_Integer_Input();
-	//if error = 0
-	value3 = value;
-	printf("\nEnter the Maximum value of generated psuedo random number(s): ");
-	hex_flag = 0;
-	Valid_Integer_Input();
-	//if error = 0
-	value4 = value;
-	//if error = 0, call patternverify
+	if(error_flag == 0)
+	{
+		value1 = value;
+		printf("\nEnter the number of 32bit numbers that you wish to verify in decimal: ");
+		hex_flag = 0;
+		Valid_Integer_Input();
+		if(error_flag == 0)
+		{
+			value2 = value;
+			printf("\nEnter the original Seed value in decimal: ");
+			hex_flag = 0;
+			Valid_Integer_Input();
+			if(error_flag == 0)
+			{
+				value3 = value;
+				printf("\nEnter the Maximum value of generated psuedo random number(s) in decimal: ");
+				hex_flag = 0;
+				Valid_Integer_Input();
+				if(error_flag == 0)
+				{
+					value4 = value;
+					patternverify();
+				}
+			}
+		}
+	}
 }
 void Space_Patternverify_Func(void)
 {
@@ -364,18 +372,26 @@ void Space_Patternverify_Func(void)
 		{
 			String_to_Hex(input2);
 		}
-		//if error = 0
-		value1 = value;
-		String_to_Decimal(input3);
-		//if error = 0
-		value2 = value;
-		String_to_Decimal(input4);
-		//if error = 0
-		value3 = value;
-		String_to_Decimal(input5);
-		//if error = 0
-		value4 = value;
-		//if error = 0. call patternverify
+		if(error_flag == 0)
+		{
+			value1 = value;
+			String_to_Decimal(input3);
+			if(error_flag == 0)
+			{
+				value2 = value;
+				String_to_Decimal(input4);
+				if(error_flag == 0)
+				{
+					value3 = value;
+					String_to_Decimal(input5);
+					if(error_flag == 0)
+					{
+						value4 = value;
+						patternverify();
+					}
+				}
+			}
+		}
 	}
 	else
 	{
