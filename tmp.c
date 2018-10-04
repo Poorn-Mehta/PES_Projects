@@ -23,6 +23,7 @@ void generator(void)
 
 int main(void)
 {
+	printf("\nCode Started\n");
 	uint32_t *ptr;
 	ptr = (uint32_t *)malloc(12);
 	*ptr = 1;
