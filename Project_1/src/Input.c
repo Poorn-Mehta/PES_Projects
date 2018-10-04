@@ -66,7 +66,7 @@ void Memalloc_Func(void)
 	{
 		value1 = 0;
 	}
-	printf("\n%d Blocks have been allocated\n", value1);	
+	printf("\n%ld Blocks have been allocated\n", value1);	
 }
 
 void Space_Memalloc_Func(void)
@@ -85,7 +85,7 @@ void Space_Memalloc_Func(void)
 		value = 0;
 		Command_Error();
 	}
-	printf("\n%d Blocks have been allocated\n", value);
+	printf("\n%ld Blocks have been allocated\n", value);
 }
 
 void Memfree_Func(void)
