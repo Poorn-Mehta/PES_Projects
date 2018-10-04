@@ -18,8 +18,8 @@ void clkbegin(void)
 void clkend(void)
 {
 	t = clock() - t; 
-    double time_taken = (((double)t)/CLOCKS_PER_SEC) * 1000000; // in micro seconds 
-	printf("\nThe process took %f micro seconds to execute: ", time_taken); 
+    double time_taken = (((double)t)/CLOCKS_PER_SEC) * 1000; // in milli seconds 
+	printf("\nThe process took %f milli seconds to execute: ", time_taken); 
 }
 
 void Detailed_Output(void)
