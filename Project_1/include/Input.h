@@ -9,6 +9,7 @@
 #include "Memread.h"
 #include "Meminv.h"
 #include "Patterngen.h"
+#include "Patternverify.h"
 
 #define Number_of_Input_Functions	9
 

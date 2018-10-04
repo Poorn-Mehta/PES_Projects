@@ -23,13 +23,11 @@ void clkend(void)
 {
 	t = clock() - t; 
     double time_taken = (((double)t)/CLOCKS_PER_SEC) * 1000; // in milli seconds 
-	printf("\nThe process took %f milli seconds to execute: ", time_taken); 
+	printf("\nThe process took %f milli seconds to execute\n", time_taken); 
 }
 
 void Boundary_Check(void)
 {
-//	uint32_t tmp_mem;
-//	tmp_mem = (mem_original + (mem_max - 1));
 	if((mem_ptr2 >= mem_original) && (mem_ptr2 <= (mem_original + (mem_max - 1))))
 	{
 		boundary_error = 0;
@@ -40,8 +38,8 @@ void Boundary_Check(void)
 		while(1)
 		{
 			printf("\nProvided memory location is outside of allocated space\n\nProceeding anyway can be dangerous\n");
-			printf("\n%p\n",mem_ptr2);
-			printf("\n%p\n",(mem_original + (mem_max - 1)));
+			printf("\nMemory address that you're trying to access: %p\n",mem_ptr2);
+			printf("\nHighest memory address that is allocated: %p\n",(mem_original + (mem_max - 1)));
 			printf("\n Type Y or y to avoid the warning and proceed,\nor type N or n to abort the operation: ");
 			fgets(b_input, 50, stdin);
 			printf("\n");

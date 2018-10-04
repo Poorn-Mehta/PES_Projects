@@ -23,7 +23,7 @@ void memalloc(void)
 		printf("\nThe allocated addresses are as below:\n");
 		for(mac_i = 0; mac_i < mem_max; mac_i ++, mem_ptr ++)
 		{
-			printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x", mac_i, mem_ptr, *mem_ptr);
+			printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mac_i, mem_ptr, *mem_ptr);
 		}
 	}
 	mem_ptr = mem_original;
