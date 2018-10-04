@@ -14,7 +14,7 @@ const char i9[] = "patternverify";
 char input_array[500], error_flag, hex_flag;
 char input[250], input1[50], input2[50], input3[50], input4[50], input5[50];
 uint8_t input_i, input_j, input_k, exit_flag, power;
-uint32_t value, value1, value2, value3, value4;
+uint64_t value, value1, value2, value3, value4;
 
 void (*Input_Func_Pointer[9]) (void) = 
 											{

@@ -8,7 +8,7 @@ void memwrite(void)
 	{
 		if(relative_address)
 		{
-			value1 = (value1 * 4) + (uint32_t)mem_ptr;
+			value1 = (value1 * 4) + (uint64_t)mem_ptr;
 		}
 		mem_ptr2 = (uint32_t *) value1;
 		if(mem_ptr2)
@@ -27,18 +27,18 @@ void memwrite(void)
 					printf("\nThe allocated addresses are as below:\n");
 					for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
 					{
-						printf("\nRelative address: %d \t\t Actual address: %x \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
+						printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
 					}
 				}
 				mem_ptr = mem_original;
 				if(print == 0)
 				{
-					printf("\nThe hex data at the specified location BEFORE writing %x is %x\n", mem_ptr2, *mem_ptr2);
+					printf("\nThe hex data at the specified location BEFORE writing %p is %x\n", mem_ptr2, *mem_ptr2);
 				}
 				*mem_ptr2 = value2;
 				if(print == 0)
 				{
-					printf("\nThe hex data at the specified location AFTER writing %x is %x\n", mem_ptr2, *mem_ptr2);
+					printf("\nThe hex data at the specified location AFTER writing %p is %x\n", mem_ptr2, *mem_ptr2);
 				}
 				else
 				{
@@ -46,7 +46,7 @@ void memwrite(void)
 					printf("\nThe allocated addresses are as below:\n");
 					for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
 					{
-						printf("\nRelative address: %d \t\t Actual address: %x \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
+						printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
 					}
 				}
 				mem_ptr = mem_original;

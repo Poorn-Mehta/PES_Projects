@@ -12,9 +12,10 @@ void mem_clear(void)
 
 void memalloc(void)
 {
-	mem_ptr = (uint32_t *) malloc (4*value1);
-	mem_original = mem_ptr;
 	mem_max = value1;
+//	value1 *= 4;
+	mem_ptr = (uint32_t *) malloc (value1);
+	mem_original = mem_ptr;
 	mem_clear();
 	Detailed_Output();
 	if(print)
@@ -22,7 +23,7 @@ void memalloc(void)
 		printf("\nThe allocated addresses are as below:\n");
 		for(mac_i = 0; mac_i < mem_max; mac_i ++, mem_ptr ++)
 		{
-			printf("\nRelative address: %d \t\t Actual address: %x \t\t Existing hex data at this location in Hex: %x", mac_i, mem_ptr, *mem_ptr);
+			printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x", mac_i, mem_ptr, *mem_ptr);
 		}
 	}
 	mem_ptr = mem_original;

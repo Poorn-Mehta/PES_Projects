@@ -13,7 +13,7 @@
 
 extern char input[250], input1[50], input2[50], input3[50], input4[50], input5[50];
 extern uint8_t main_i, main_j, exit_flag, space_flag, relative_address;
-extern uint32_t value, value1, value2, value3, value4;
+extern uint64_t value, value1, value2, value3, value4;
 
 extern char m_print[50];
 extern uint8_t print;

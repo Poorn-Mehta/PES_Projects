@@ -28,9 +28,9 @@ void clkend(void)
 
 void Boundary_Check(void)
 {
-	uint32_t tmp_mem;
-	tmp_mem = (mem_original + (mem_max - 1));
-	if((mem_ptr2 >= mem_original) && (mem_ptr2 <= tmp_mem))
+//	uint32_t tmp_mem;
+//	tmp_mem = (mem_original + (mem_max - 1));
+	if((mem_ptr2 >= mem_original) && (mem_ptr2 <= (mem_original + (mem_max - 1))))
 	{
 		boundary_error = 0;
 	}
@@ -40,8 +40,8 @@ void Boundary_Check(void)
 		while(1)
 		{
 			printf("\nProvided memory location is outside of allocated space\n\nProceeding anyway can be dangerous\n");
-			printf("\n%x\n",mem_ptr2);
-			printf("\n%x\n",tmp_mem);
+			printf("\n%p\n",mem_ptr2);
+			printf("\n%p\n",(mem_original + (mem_max - 1)));
 			printf("\n Type Y or y to avoid the warning and proceed,\nor type N or n to abort the operation: ");
 			fgets(b_input, 50, stdin);
 			printf("\n");

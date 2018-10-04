@@ -30,7 +30,7 @@ void patterngen(void)
 		max = value4;
 		if(relative_address)
 		{
-			value1 = (value1 * 4) + (uint32_t)mem_ptr;
+			value1 = (value1 * 4) + (uint64_t)mem_ptr;
 		}
 		mem_ptr2 = (uint32_t *) value1;
 		if(mem_ptr2)
@@ -44,7 +44,7 @@ void patterngen(void)
 			else
 			{
 				value2 -= 1;
-				value2 = (value2 * 4) + (uint32_t)pattern_original;
+				value2 = (value2 * 4) + (uint64_t)pattern_original;
 				mem_ptr2 = (uint32_t *) value2;
 				Boundary_Check();
 				if((boundary_error == 1) && (b_proceed == 0))
@@ -62,7 +62,7 @@ void patterngen(void)
 						printf("\nThe allocated addresses are as below:\n");
 						for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
 						{
-							printf("\nRelative address: %d \t\t Actual address: %x \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
+							printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
 						}
 					}
 					mem_ptr = mem_original;
@@ -83,7 +83,7 @@ void patterngen(void)
 							printf("\nThe allocated addresses are as below:\n");
 						for(mem_i = 0; mem_i < mem_max; mem_i ++, mem_ptr ++)
 						{
-							printf("\nRelative address: %d \t\t Actual address: %x \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
+							printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
 						}
 					}
 					mem_ptr = mem_original;
