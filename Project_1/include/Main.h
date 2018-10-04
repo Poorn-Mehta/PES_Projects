@@ -8,8 +8,6 @@
 #include<math.h>
 #include<time.h>
 
-#include "Config.h"
-
 #define Invalid()	printf("\nInvalid Command\n");
 
 extern char input[250], input1[50], input2[50], input3[50], input4[50], input5[50];
