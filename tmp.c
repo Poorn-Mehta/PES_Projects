@@ -24,12 +24,13 @@ void generator(void)
 int main(void)
 {
 	printf("\nCode Started\n");
-	uint8_t tmp;
-	scanf("%d", &tmp);
+	uint32_t tmp, tmp2;
+	scanf("%x", &tmp);
+	scanf("%x", &tmp2);
 	uint32_t *ptr;
 	ptr = (uint32_t *)malloc(tmp);
-	*ptr = 1;
-	printf("%d",*ptr);
+	*ptr = tmp2;
+	printf("%x",*ptr);
 /*	uint8_t input_j, hex_flag;
 	uint32_t value;
 	hex_flag = 1;
