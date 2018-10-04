@@ -10,6 +10,10 @@ uint8_t print = 0;
 
 clock_t t;
 
+char b_input[50];
+uint8_t b_proceed = 0;
+uint8_t boundary_error = 0;
+
 void clkbegin(void)
 { 
     t = clock(); 
@@ -22,6 +26,39 @@ void clkend(void)
 	printf("\nThe process took %f milli seconds to execute: ", time_taken); 
 }
 
+void Boundary_Check(void)
+{
+	if((mem_ptr2 >= mem_original) && (mem_ptr2 <= (mem_original + (mem_max - 1))))
+	{
+		boundary_error = 0;
+	}
+	else
+	{
+		boundary_error = 1;
+		while(1)
+		{
+			printf("\nProvided memory location is outside of allocated space\n\nProceeding anyway can be dangerous\n");
+			printf("\n Type Y or y to avoid the warning and proceed,\nor type N or n to abort the operation: ");
+			fgets(b_input, 50, stdin);
+			printf("\n");
+			if((b_input[0] == 'Y') || (b_input[0] == 'y'))
+			{
+				b_proceed = 1;
+				break;
+			}
+			else if((b_input[0] == 'N') || (b_input[0] == 'n'))
+			{
+				b_proceed = 0;
+				break;
+			}
+			else
+			{
+				printf("\nInvalid Input, Try again\n");
+			}
+		}
+	}
+}
+
 void Detailed_Output(void)
 {
 	while(1)
@@ -29,6 +66,7 @@ void Detailed_Output(void)
 		printf("Do you want to use Detailed information?\n");
 		printf("\n Type Y or y to accept, type N or n to reject: ");
 		fgets(m_print, 50, stdin);
+		printf("\n");
 		if((m_print[0] == 'Y') || (m_print[0] == 'y'))
 		{
 			print = 1;
@@ -48,10 +86,17 @@ void Detailed_Output(void)
 
 void Array_Cleanup(char *clean_ptr)
 {
-	while(*clean_ptr != 0)
+	if(clean_ptr)
 	{
-		*clean_ptr = 0;
-		clean_ptr += 1;
+		while(*clean_ptr != 0)
+		{
+			*clean_ptr = 0;
+			clean_ptr += 1;
+		}
+	}
+	else
+	{
+		Null_Ptr();
 	}
 }
 
@@ -66,7 +111,6 @@ int main(void)
 	Array_Cleanup(input5);
 	Help_Init();
 	Input_Init();
-//	mac_init();
 	char address_type[50];
 	while(1)
 	{
@@ -175,33 +219,5 @@ int main(void)
 		Array_Cleanup(input3);
 		Array_Cleanup(input4);
 		Array_Cleanup(input5);
-//		printf("\n%s\n%s\n%s\n%s",input2,input3,input4,input5);
-	/*	break;
-		if(input2[main_i] == ' ')
-		{
-			space_flag = 1; 
-			main_j = 1;
-			Input_Lookup();
-			if(exit_flag)
-			{
-				return 0;
-			}
-		}
-		else
-		{
-			while(input[main_i] != 0)
-			{
-				compare[main_i] = input[main_i];
-				main_i += 1;
-			}
-			Input_Lookup();
-			if(exit_flag)
-			{
-				return 0;
-			}
-		}
-		Array_Cleanup(input);
-		Array_Cleanup(input2);
-		Array_Cleanup(compare);*/
 	}
 }

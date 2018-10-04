@@ -16,26 +16,10 @@ extern const char ire[], i1[], i2[], i3[], i4[], i5[], i6[], i7[], i8[], i9[];
 extern void (*Input_Func_Pointer[9]) (void);
 extern void (*Input_Space_Func_Pointer[9]) (void);
 
-typedef struct
-{
-	char it1[5];
-	char it2[5];
-	char it3[9];
-	char it4[8];
-	char it5[9];
-	char it6[8];
-	char it7[7];
-	char it8[11];
-	char it9[14];
-}Input;
-
-extern Input input_search, *input_ptr;
-extern char *input_ptr2, input_check[20], error_flag, hex_flag;
-extern uint8_t input_j, input_k;
+extern char input_array[500], error_flag, hex_flag;
+extern uint8_t input_i, input_j, input_k;
 
 void Command_Error(void);
-/*void Help_Display(void);
-void Help_Lookup(void);*/
 void Exit_Func(void);
 void Memalloc_Func(void);
 void Space_Memalloc_Func(void);

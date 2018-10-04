@@ -11,10 +11,9 @@ const char i7[] = "meminv";
 const char i8[] = "patterngen";
 const char i9[] = "patternverify";
 
-Input input_search, *input_ptr;
-char *input_ptr2, input_check[20], error_flag, hex_flag;
+char input_array[500], error_flag, hex_flag;
 char input[250], input1[50], input2[50], input3[50], input4[50], input5[50];
-uint8_t input_j, input_k, exit_flag, power;
+uint8_t input_i, input_j, input_k, exit_flag, power;
 uint32_t value, value1, value2, value3, value4;
 
 void (*Input_Func_Pointer[9]) (void) = 
@@ -387,51 +386,69 @@ void Space_Patternverify_Func(void)
 
 void String_to_Decimal(char *stod_ptr)
 {
-	char *stod_i;
-	stod_i = stod_ptr;
-	for(; *stod_ptr != 0; stod_ptr ++)
+	if(stod_ptr)
 	{
-		if(isdigit(*stod_ptr) == 0)
+		char *stod_i;
+		stod_i = stod_ptr;
+		for(; *stod_ptr != 0; stod_ptr ++)
 		{
-			printf("\nNon Integer Value Entered\n");
-			error_flag = 1;
-			value = 0;
-			break;
+			if(isdigit(*stod_ptr) == 0)
+			{
+				printf("\nNon Integer Value Entered\n");
+				error_flag = 1;
+				value = 0;
+				break;
+			}
+		}
+		if(*stod_ptr == 0)
+		{
+			error_flag = 0;
+			value = atoi(stod_i);
 		}
 	}
-	if(*stod_ptr == 0)
+	else
 	{
-		error_flag = 0;
-		value = atoi(stod_i);
+		Null_Ptr();
+		error_flag = 1;
+		value = 0;
 	}
 }
 
 void String_to_Hex(char *stox_ptr)
 {
-	char *stox_i;
-	stox_i = stox_ptr;
-	while(*stox_ptr != 0)
+	if(stox_ptr)
 	{
-		if(((*stox_ptr >= '0') && (*stox_ptr <= '9')) || ((*stox_ptr >= 'a') && (*stox_ptr <= 'f')) || ((*stox_ptr >= 'A') && (*stox_ptr <= 'F')))
+		char *stox_i;
+		stox_i = stox_ptr;
+		while(*stox_ptr != 0)
 		{
-			stox_ptr += 1;
+			if(((*stox_ptr >= '0') && (*stox_ptr <= '9')) || ((*stox_ptr >= 'a') && (*stox_ptr <= 'f')) || ((*stox_ptr >= 'A') && (*stox_ptr <= 'F')))
+			{
+				stox_ptr += 1;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if(*stox_ptr == 0)
+		{
+			error_flag = 0;
+			value = (uint32_t) strtol(stox_i, NULL, 16);
 		}
 		else
 		{
-			break;
+			printf("\nNon Hex Value Entered\n");
+			error_flag = 1;
+			value = 0;
+			Command_Error();
 		}
-	}
-	if(*stox_ptr == 0)
-	{
-		error_flag = 0;
-		value = (uint32_t) strtol(stox_i, NULL, 16);
 	}
 	else
 	{
-		printf("\nNon Hex Value Entered\n");
+		Null_Ptr();
 		error_flag = 1;
 		value = 0;
-		Command_Error();
 	}
 }
 
@@ -457,17 +474,87 @@ void Valid_Integer_Input(void)
 
 void Input_Init(void)
 {
-	input_ptr = &input_search;
-	input_ptr2 = (char *)&input_ptr->it1;
-	strcpy(input_search.it1, i1);
-	strcpy(input_search.it2, i2);
-	strcpy(input_search.it3, i3);
-	strcpy(input_search.it4, i4);
-	strcpy(input_search.it5, i5);
-	strcpy(input_search.it6, i6);
-	strcpy(input_search.it7, i7);
-	strcpy(input_search.it8, i8);
-	strcpy(input_search.it9, i9);
+	input_j = 0;
+	input_k = 0;
+	while(i1[input_k] != 0)
+	{
+		input_array[input_j] = i1[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i2[input_k] != 0)
+	{
+		input_array[input_j] = i2[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i3[input_k] != 0)
+	{
+		input_array[input_j] = i3[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i4[input_k] != 0)
+	{
+		input_array[input_j] = i4[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i5[input_k] != 0)
+	{
+		input_array[input_j] = i5[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i6[input_k] != 0)
+	{
+		input_array[input_j] = i6[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i7[input_k] != 0)
+	{
+		input_array[input_j] = i7[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i8[input_k] != 0)
+	{
+		input_array[input_j] = i8[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
+	input_j += 1;
+	input_k = 0;
+	while(i9[input_k] != 0)
+	{
+		input_array[input_j] = i9[input_k];
+		input_j += 1;
+		input_k += 1;
+	}
+	input_array[input_j] = 0;
 }
 
 void Input_Cleanup(void)
@@ -480,69 +567,83 @@ void Input_Cleanup(void)
 	value3 = 0;
 	value4 = 0;
 	input_j = 0;
-	input_ptr2 = (char *)&input_ptr->it1;
-	Array_Cleanup(input_check);
 }
 
 void Input_Lookup(void)
 {
 	Input_Cleanup();
+	input_i = 0;
 	//In the input, entering space after command as a mistake is acceptable, but entering anything after that space is not
 	if((space_flag != 0) && (input2[0] != 0))
 	{
 		for(input_k = 0; input_k < Number_of_Input_Functions; input_k ++)
 		{
-			for(input_j = 0;; input_j++)
+			input_j = 0;
+			while((input_array[input_i] != 0) && (input1[input_j] != 0))
 			{
-				input_check[input_j] = *input_ptr2;
-				input_ptr2 += 1;
-				if(input_check[input_j] == 0)
+				if(input_array[input_i] == input1[input_j])
+				{
+					input_j += 1;
+					input_i += 1;
+				}
+				else
 				{
 					break;
 				}
 			}
-			if(strcmp(input_check, input1) == 0)
+			if((input_array[input_i] == 0) && (input1[input_j] == 0))
 			{
 				(*Input_Space_Func_Pointer[input_k])();
 				break;
 			}
 			else
 			{
-				if(input_k == (Number_of_Input_Functions - 1))	
+				while(input_array[input_i] != 0)
+				{
+					input_i += 1;
+				}
+				if(input_k == (Number_of_Help_Functions - 1))	
 				{
 					printf("%s",ire);
 				}
 			}
-			input_j = 0;
-			Array_Cleanup(input_check);
+			input_i += 1;
 		}
 	}
 	else
 	{
 		for(input_k = 0; input_k < Number_of_Input_Functions; input_k ++)
 		{
-			for(input_j = 0;; input_j++)
+			input_j = 0;
+			while((input_array[input_i] != 0) && (input1[input_j] != 0))
 			{
-				input_check[input_j] = *input_ptr2;
-				input_ptr2 += 1;
-				if(input_check[input_j] == 0)
+				if(input_array[input_i] == input1[input_j])
+				{
+					input_j += 1;
+					input_i += 1;
+				}
+				else
 				{
 					break;
 				}
 			}
-			if(strcmp(input_check, input1) == 0)
+			if((input_array[input_i] == 0) && (input1[input_j] == 0))
 			{
 				(*Input_Func_Pointer[input_k])();
 				break;
 			}
 			else
 			{
-				if(input_k == (Number_of_Input_Functions - 1))	
+				while(input_array[input_i] != 0)
+				{
+					input_i += 1;
+				}
+				if(input_k == (Number_of_Help_Functions - 1))	
 				{
 					printf("%s",ire);
 				}
 			}
-			Array_Cleanup(input_check);
+			input_i += 1;
 		}
 	}
 }

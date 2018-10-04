@@ -5,24 +5,11 @@
 
 #define Number_of_Help_Functions		8
 
-extern const char h[], hd[], h1[], h2[], h3[], h4[], h5[], h6[], h7[], h8[], h9[], hre[], hr1[], hr2[], hr3[];
+extern const char h[], hd[], h1[], h2[], h3[], h4[], h5[], h6[], h7[], h8[], hre[], hr1[], hr2[], hr3[], hr4[], hr5[], hr6[], hr7[], hr8[];
+extern char help_array[];
 
-typedef struct
-{
-	char ht1[5];
-	char ht2[9];
-	char ht3[8];
-	char ht4[9];
-	char ht5[8];
-	char ht6[7];
-	char ht7[11];
-	char ht8[14];
-}Help;
-
-
-extern Help help, *help_ptr;
-extern char *help_ptr2, help_check[20], help_print[500];
-extern uint8_t help_j, help_k;
+extern char help_print[500];
+extern uint8_t help_i, help_j, help_k;
 extern void (*Help_Func_Ptr[8]) (void);
 
 void Help_Init(void);

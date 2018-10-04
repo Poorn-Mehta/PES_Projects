@@ -21,9 +21,8 @@ const char hr7[] = "\nPsuedo Random Pattern Generation:\nType patterngen and the
 const char hr8[] = "\nPsuedo Random Pattern Verification:\nType patternverify and then enter maximum value,\nseed, number of 32bits words that you wish to verify,\nand starting memory location pointing to the stored pattern\nto verify multiple psuedo random numbers.\n\nAlternatively, type patternverify <starting memory address> <length of pattern> <seed> <maxvalue>\nwithout <> for values\n";
 
 
-Help help, *help_ptr;
-char *help_ptr2, help_check[20], help_print[500];
-uint8_t help_j, help_k;
+char help_print[500], help_array[500];
+uint8_t help_i, help_j, help_k;
 
 void (*Help_Func_Ptr[8]) (void) = 
 								{
@@ -78,16 +77,78 @@ void Help_Response8(void)
 
 void Help_Init(void)
 {
-	help_ptr = &help;
-	help_ptr2 = (char *)&help_ptr->ht1;
-	strcpy(help.ht1, h1);
-	strcpy(help.ht2, h2);
-	strcpy(help.ht3, h3);
-	strcpy(help.ht4, h4);
-	strcpy(help.ht5, h5);
-	strcpy(help.ht6, h6);
-	strcpy(help.ht7, h7);
-	strcpy(help.ht8, h8);
+	help_j = 0;
+	help_k = 0;
+	while(h1[help_k] != 0)
+	{
+		help_array[help_j] = h1[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h2[help_k] != 0)
+	{
+		help_array[help_j] = h2[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h3[help_k] != 0)
+	{
+		help_array[help_j] = h3[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h4[help_k] != 0)
+	{
+		help_array[help_j] = h4[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h5[help_k] != 0)
+	{
+		help_array[help_j] = h5[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h6[help_k] != 0)
+	{
+		help_array[help_j] = h6[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h7[help_k] != 0)
+	{
+		help_array[help_j] = h7[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
+	help_j += 1;
+	help_k = 0;
+	while(h8[help_k] != 0)
+	{
+		help_array[help_j] = h8[help_k];
+		help_j += 1;
+		help_k += 1;
+	}
+	help_array[help_j] = 0;
 }
 
 void Help_Display(void)
@@ -107,32 +168,39 @@ void Help_Display(void)
 
 void Help_Lookup(void)
 {
-	help_ptr2 = (char *)&help_ptr->ht1;
-	Array_Cleanup(help_check);
+	help_i = 0;
 	for(help_k = 0; help_k < Number_of_Help_Functions; help_k ++)//Number_of_Help_Functions
 	{
-		for(help_j = 0;; help_j++)
+		help_j = 0;
+		while((help_array[help_i] != 0) && (input2[help_j] != 0))
 		{
-			help_check[help_j] = *help_ptr2;
-			help_ptr2 += 1;
-			if(help_check[help_j] == 0)
+			if(help_array[help_i] == input2[help_j])
+			{
+				help_j += 1;
+				help_i += 1;
+			}
+			else
 			{
 				break;
 			}
 		}
-		if(strcmp(help_check, input2) == 0)
+		if((help_array[help_i] == 0) && (input2[help_j] == 0))
 		{
 			(*Help_Func_Ptr[help_k])();
 			break;
 		}
 		else
 		{
+			while(help_array[help_i] != 0)
+			{
+				help_i += 1;
+			}
 			if(help_k == (Number_of_Help_Functions - 1))	
 			{
 				printf("%s",hre);
 			}
 		}
-		Array_Cleanup(help_check);
+		help_i += 1;
 	}
 }
 
