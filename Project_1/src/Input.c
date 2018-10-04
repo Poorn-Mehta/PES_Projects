@@ -320,6 +320,7 @@ void Space_Patterngen_Func(void)
 		Command_Error();
 	}
 }
+
 void Patternverify_Func(void)
 {
 	if(relative_address)
@@ -360,6 +361,7 @@ void Patternverify_Func(void)
 		}
 	}
 }
+
 void Space_Patternverify_Func(void)
 {
 	if(space_flag == 4)
@@ -654,7 +656,7 @@ void Input_Lookup(void)
 				{
 					input_i += 1;
 				}
-				if(input_k == (Number_of_Help_Functions - 1))	
+				if(input_k == Number_of_Help_Functions)	
 				{
 					printf("%s",ire);
 				}
