@@ -3,7 +3,7 @@
 
 #include "Main.h"
 
-extern float random, seed;
+extern float random_number, seed;
 extern uint32_t max, range, random_value, *pattern_original;
 
 void generator(void);

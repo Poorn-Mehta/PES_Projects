@@ -3,22 +3,22 @@
 //add, len, seed, max
 
 uint32_t *mem_ptr2, mem_i;
-float random, seed;
+float random_number, seed;
 uint32_t max, range, random_value, *pattern_original;
 clock_t t;
 
 void generator(void)
 {
-	random = ((0.4353491074*seed) + 0.8173946121);
-	while(random > 1)
+	random_number = ((0.4353491074*seed) + 0.8173946121);
+	while(random_number > 1)
 	{
-		random /= 10;
+		random_number /= 10;
 	}
-	random *= max;
-	random_value = (uint32_t)random;
+	random_number *= max;
+	random_value = (uint32_t)random_number;
 	printf("\n%x", random_value);
 	*mem_ptr2 = random_value;
-	seed = random;
+	seed = random_number;
 }
 
 void patterngen(void)
