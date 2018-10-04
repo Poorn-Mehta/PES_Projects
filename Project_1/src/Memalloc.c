@@ -13,7 +13,6 @@ void mem_clear(void)
 void memalloc(void)
 {
 	mem_max = value1;
-//	value1 *= 4;
 	mem_ptr = (uint32_t *) malloc (value1);
 	mem_original = mem_ptr;
 	mem_clear();
