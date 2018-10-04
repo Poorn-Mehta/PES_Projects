@@ -23,10 +23,65 @@ void generator(void)
 
 int main(void)
 {
+	uint32_t *ptr;
+	ptr = (uint32_t *)malloc(12);
+	*ptr = 1;
+	printf("%d",*ptr);
+/*	uint8_t input_j, hex_flag;
+	uint32_t value;
+	hex_flag = 1;
+	char test[50];
+	while(1)
+	{
+		fgets(test, 50, stdin);
+		input_j = 0;
+		while(test[input_j] != '\n')
+		{
+			input_j += 1;
+		}
+		test[input_j] = 0;
+		if(hex_flag == 0)
+		{
+			uint8_t dummy = 1;
+		//	String_to_Decimal(test);
+		}
+		else
+		{
+			input_j = 0;
+			char *ptr;
+			ptr = &test;
+			while(test[input_j] != 0)
+			{
+				if(((test[input_j] >= '0') && (test[input_j] <= '9')) || ((test[input_j] >= 'a') && (test[input_j] <= 'f')) || ((test[input_j] >= 'A') && (test[input_j] <= 'F')))
+				{
+					input_j += 1;
+				}
+				else
+				{
+					break;
+				}
+			}
+			if(test[input_j] == 0)
+			{
+				value = (uint32_t) strtol(ptr, NULL, 16);
+				printf("\n%x\n", value);
+			}
+			else
+			{
+				printf("\nError\n");
+			}
+		}
+	}
+	char arr[20];
+	unsigned int print;
+	fgets(arr, 20, stdin);
+	print = (unsigned int) strtol(arr, NULL, 16);
+	printf("%x", print);
+	printf("%d",print);
 	long int *tmp;
 	tmp = (long int *) malloc(32);
 	printf("%x", tmp);
-/*	char str[100];
+	char str[100];
 	printf("Enter string: ");
 	fgets(str, 100, stdin);
 	printf("%s",str);

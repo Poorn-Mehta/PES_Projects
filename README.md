@@ -11,4 +11,20 @@ Sincerely,
 
 Team (Rushi and Poorn)
 
-$ find . \( -name "*.c" -o -name "*.h" \)  -exec cat {} \; >> output.txt
+Update on Project as of 10/4/2018
+
+2 things are yet to implement - pattern verify and bound checking. Raw functions are ready.
+
+Every other functions works perfectly in Windows Dev C (gcc) however, in linux,
+it throws an error - segmentation fault (core dumped) - we have no idea about this. 
+Currently, we are trying to resolve this error. Once it is solved, we will integrate
+bound checking and pattern verify.
+
+It tooks us this much of time because the user interface is pretty decent. 
+
+It accepts only valid arguments in all input cases (rejecting non decimal, non hex values, commands with extra or less parameters, misspellings etc.)
+
+Also, it accepts arguments and commands in two formats:
+(1) If you just type command which accepts arguments, and then press enter, it will keep on prompting untill it has received all valid parameters
+(2) You can even call the function with parameters, by simply putting space in between - such as memwrite <address> <value>
+
