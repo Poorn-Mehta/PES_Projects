@@ -33,6 +33,7 @@ void meminv(void)
 						printf("\nRelative address: %d \t\t Actual address: %p \t\t Existing hex data at this location in Hex: %x\n", mem_i, mem_ptr, *mem_ptr);
 					}
 				}
+				mem_ptr = mem_original;
 				if(print == 0)
 				{
 					printf("\nThe data in hex at the specified memory location BEFORE Inverting is %x\n", *mem_ptr2);
