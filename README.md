@@ -29,8 +29,41 @@ It tooks us this much of time because the user interface is pretty decent.
 It accepts only valid arguments in all input cases (rejecting non decimal, non hex values, commands with extra or less parameters, misspellings etc.)
 
 Also, it accepts arguments and commands in two formats:
-(1) If you just type command which accepts arguments, and then press enter, it will keep on prompting untill it has received all valid parameters
+(1) If you just type command which accepts arguments, and then press enter, it will keep on prompting until it has received all valid parameters
 (2) You can even call the function with parameters, by simply putting space in between - such as memwrite <address> <value>
 
+--------------------------------------------------------------------------------------------------------------------------
+Before 11.59 PM as on 10/4/2018:
 
+We have overcome all the previous limitations and have implemented extended UI functionalities which are not limited to but are inclusive of the following:
 
+1. Memory allocation
+2. Memory freeing
+3. Memory read
+4. Memory write
+5. Memory inversion
+6. Pattern generation
+7. Pattern verification
+8. (Internal function) Time measurement in all major executions
+9. (Internal function) Boundary check
+10. (Internal function) Null-pointer check
+11. (Internal function) Pre-clearing of pointer after memory allocation
+12. (Internal function) Error-checks for user-specified data entry
+
+(Extended functionalities that we may include as soon as possible:)
+
+1. Memory clear operation
+2. Memory Swap Function
+3. Memory Reallocation (Memory free + Memory allocation + Memory clear operation)
+4. Memory Copy Function
+5. Memory Math Operations
+6. Memory Math Lighthouse Function (provides results for all the math operations for two data points and stores at two user-specified addresses within the allocated spectrum)
+7. Memory Statistical Operations in real-time (performs various statistical measurements upon successful operation of either Memory Math Operations or Memory Math Lighthouse Function)
+
+This is the brief and concise report on our existing status.
+
+Thanks.
+
+Sincerely,
+
+Team (Rushi & Poorn)
