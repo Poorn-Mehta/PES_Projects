@@ -2,6 +2,13 @@
 #include "Help.h"
 #include "Input.h"
 
+#define TARGET_DEVICE (__linux__ || _WIN64 || __APPLE__ )
+#if TARGET_DEVICE
+    #define HOST
+#else
+    #define FRDM
+#endif
+
 char input[250], input1[50], input2[50], input3[50], input4[50], input5[50];
 uint8_t main_i, main_j, exit_flag, space_flag, relative_address;
 
@@ -104,6 +111,9 @@ void Array_Cleanup(char *clean_ptr)
 
 int main(void)	
 {
+	#ifdef	HOST
+	printf("\nHost System\n");
+	#endif
 	relative_address = 1;
 	Array_Cleanup(input);
 	Array_Cleanup(input1);
