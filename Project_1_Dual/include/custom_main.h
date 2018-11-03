@@ -18,10 +18,10 @@
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
-
-#ifdef	HOST
 #include<time.h>
-#endif
+//#ifdef	HOST
+
+//#endif
 
 #include "custom_system_identifier.h"
 
