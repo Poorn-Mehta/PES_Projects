@@ -33,7 +33,6 @@ void FGETS(char *array_to_write, uint8_t bytes, FILE *stream)
 		array_to_write += 1;
 	}while(array_to_write < (tmp + bytes));
 }
-#endif
 
 void Timer_Config(void)
 {
@@ -70,6 +69,7 @@ void Timer_Stop(void)
     LPTMR_DRV_Stop(LPTMR0_IDX);
 	output_string("\n\rThe process took %d micro seconds to execute\n\r", time_taken);
 }
+#endif
 
 #ifdef	HOST
 void clkbegin(void)
