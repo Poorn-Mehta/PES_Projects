@@ -280,11 +280,15 @@ void cmain(void)
 		main_j = 0;
 		if(input[main_i] != 0)
 		{
-			Input_Lookup();
+			Input_Lookup();		
 			if(exit_flag)
 			{
+#ifdef	FRDM	
 				output_string("\n\n\rExit From Code\n\n\rGoing into Infinite Loop\n\r");
 				while(1);
+#else
+				break;			
+#endif			
 			}
 		}
 		Array_Cleanup(input);

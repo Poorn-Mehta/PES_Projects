@@ -89,9 +89,5 @@ int main (void)
     // Initialize LED1
  //   LED1_EN;
 
-
     cmain();
-
-    while(1);
-
 }
