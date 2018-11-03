@@ -36,7 +36,7 @@
 #define Invalid()	output_string("\nInvalid Command\n")
 #define Null_Ptr()	output_string("\nNull Pointer. Can't proceed. Abort.\n")
 
-#define Enter_Detected	0x0D
+
 
 typedef volatile uint8_t vuint8_t;
 typedef volatile uint32_t	vuint32_t;

@@ -31,6 +31,7 @@
 	#define stop_timing		clkend
 	typedef uint64_t	ptr_type;
 	#define exit_function	system_exit
+	#define Enter_Detected	'\n'
 #else
 	#define output_string	PRINTF
 	#define input_string	FGETS
@@ -38,6 +39,7 @@
 	#define stop_timing		Timer_Stop
 	typedef volatile uint32_t	ptr_type;
 	#define exit_function	embedded_exit
+	#define Enter_Detected	0x0D
 #endif
 
 #endif /* CUSTOM_SYSTEM_IDENTIFIER_H_ */
