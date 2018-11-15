@@ -10,7 +10,7 @@ LIBS=-lm
 _DEPS = Custom_Circular_Buffer.h Custom_Main.h Custom_Sys_Identifier.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Custom_Circular_Buffer.o Main.o test.o
+_OBJ = Custom_Circular_Buffer.o main.o test.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
