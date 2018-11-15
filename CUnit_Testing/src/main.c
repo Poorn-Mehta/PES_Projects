@@ -22,7 +22,6 @@ int main(void)
 {
 	#if		TEST
 	
-//	CBuffer_Data = 0;
 	return (t_main());
 	
 	#else

@@ -29,6 +29,9 @@
 #include <string.h>
 #include "CUnit/Basic.h"
 
+#include "Custom_Main.h"
+#include "Custom_Circular_Buffer.h"
+
 /* Pointer to the file used by the tests. */
 static FILE* temp_file = NULL;
 
