@@ -53,8 +53,8 @@ Byte CBuffer_Assign(Byte CBuffer_ID)
 {
 	CBuffer_Instance[CBuffer_ID].Length = CBuffer_Instance_Length[CBuffer_ID];
 	CBuffer_Instance[CBuffer_ID].Elements_count = 0;
-	CBuffer_Instance[CBuffer_ID].Start_ptr = (Byte *) malloc(CBuffer_Instance_Length[CBuffer_ID]);
-	if(CBuffer_Instance[CBuffer_ID].Start_ptr)	return 1;
+	CBuffer_Instance[CBuffer_ID].Start_ptr =  (Byte *) malloc(CBuffer_Instance_Length[CBuffer_ID]);
+	if(CBuffer_Instance[CBuffer_ID].Start_ptr == 0)		return 1;
 	CBuffer_Instance[CBuffer_ID].Head = 0;
 	CBuffer_Instance[CBuffer_ID].Tail = 0;
 	CBuffer_Instance[CBuffer_ID].Index = 0;
@@ -77,7 +77,6 @@ Byte CBuffer_Init(void)
 	{
 		if(CBuffer_Assign(cbuffer_i))	return 1;
 	}
-	
 	return 0;
 	
 	#else
@@ -236,6 +235,7 @@ DWord CBuffer_Elements(Byte CBuffer_ID)
 }
 
 //resizing existing buffer
+/*
 Byte CBuffer_Resize(Byte CBuffer_ID)
 {
 	Output_String("\n\rEnter new length of buffer%d: ", CBuffer_ID);
@@ -249,5 +249,5 @@ Byte CBuffer_Resize(Byte CBuffer_ID)
 	CBuffer_Instance_Length[CBuffer_ID] = value;
 	CBuffer_Assign(CBuffer_ID);
 	return 0;
-}
+}*/
 

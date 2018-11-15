@@ -3,6 +3,8 @@
 
 Byte CBuffer_Data;
 
+int t_main();
+
 #ifdef	FRDM
 void FGETS(char *array_to_write, Byte bytes, FILE *stream)
 {
