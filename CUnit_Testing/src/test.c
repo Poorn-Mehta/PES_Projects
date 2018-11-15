@@ -92,6 +92,18 @@ void testFREAD(void)
    }
 }
 
+/* test of buffer init
+ */
+void testBUFFERINIT(void)
+{
+   unsigned char buffer[20];
+
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSERT(0 == CBuffer_Init();
+   }
+}
+
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
@@ -114,7 +126,8 @@ int main()
    /* add the tests to the suite */
    /* NOTE - ORDER IS IMPORTANT - MUST TEST fread() AFTER fprintf() */
    if ((NULL == CU_add_test(pSuite, "test of fprintf()", testFPRINTF)) ||
-       (NULL == CU_add_test(pSuite, "test of fread()", testFREAD)))
+       (NULL == CU_add_test(pSuite, "test of fread()", testFREAD)) ||
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Init()", testBUFFERINIT)))
    {
       CU_cleanup_registry();
       return CU_get_error();
