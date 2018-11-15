@@ -235,7 +235,7 @@ DWord CBuffer_Elements(Byte CBuffer_ID)
 }
 
 //resizing existing buffer
-/*
+
 Byte CBuffer_Resize(Byte CBuffer_ID)
 {
 	Output_String("\n\rEnter new length of buffer%d: ", CBuffer_ID);
@@ -249,5 +249,5 @@ Byte CBuffer_Resize(Byte CBuffer_ID)
 	CBuffer_Instance_Length[CBuffer_ID] = value;
 	CBuffer_Assign(CBuffer_ID);
 	return 0;
-}*/
+}
 

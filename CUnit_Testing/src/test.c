@@ -104,6 +104,10 @@ void testBUFFERINIT(void)
    if (NULL != temp_file) {
       rewind(temp_file);
       CU_ASSERT(0 == CBuffer_Init());
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'A'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'B'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'C'));
+      CU_ASSERT(Overwriting == CBuffer_Byte_Write(0, 'D'));
    }
 }
 
