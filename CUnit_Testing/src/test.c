@@ -97,17 +97,53 @@ void testFREAD(void)
 
 /* test of buffer init
  */
-void testBUFFERINIT(void)
+void test_CBuf_Init(void)
 {
-   unsigned char buffer[20];
-
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT(0 == CBuffer_Init());
+      CU_ASSERT_FATAL(0 == CBuffer_Init());
+   }
+}
+
+void test_CBuf_Overwrite(void)
+{
+   if (NULL != temp_file) {
+      rewind(temp_file);
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'A'));
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'B'));
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'C'));
       CU_ASSERT(Overwriting == CBuffer_Byte_Write(0, 'D'));
+   }
+}
+
+void test_CBuf_Emptyread(void)
+{
+	Byte data;
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('D' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('B' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('C' == data);
+      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
+   }
+}
+
+void test_CBuf_Partialfill(void)
+{
+	Byte data;
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'X'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'Y'));
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('X' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('Y' == data);
+      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
    }
 }
 
@@ -134,7 +170,10 @@ int t_main()
    /* NOTE - ORDER IS IMPORTANT - MUST TEST fread() AFTER fprintf() */
    if ((NULL == CU_add_test(pSuite, "test of fprintf()", testFPRINTF)) ||
        (NULL == CU_add_test(pSuite, "test of fread()", testFREAD)) ||
-	   (NULL == CU_add_test(pSuite, "test of CBuffer_Init()", testBUFFERINIT)))
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Init()", test_CBuf_Init)) ||
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Overwrite", test_CBuf_Overwrite)) ||
+       (NULL == CU_add_test(pSuite, "test of CBuffer_Emptyread", test_CBuf_Emptyread)) ||
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Partialfill", test_CBuf_Partialfill)))
    {
       CU_cleanup_registry();
       return CU_get_error();
