@@ -49,22 +49,40 @@ void String_to_Decimal(char *stod_ptr)
 
 // Initializing each of the buffers
 
-void CBuffer_Assign(Byte CBuffer_ID)
+Byte CBuffer_Assign(Byte CBuffer_ID)
 {
 	CBuffer_Instance[CBuffer_ID].Length = CBuffer_Instance_Length[CBuffer_ID];
 	CBuffer_Instance[CBuffer_ID].Elements_count = 0;
 	CBuffer_Instance[CBuffer_ID].Start_ptr = (Byte *) malloc(CBuffer_Instance_Length[CBuffer_ID]);
+	if(CBuffer_Instance[CBuffer_ID].Start_ptr)	return 1;
 	CBuffer_Instance[CBuffer_ID].Head = 0;
 	CBuffer_Instance[CBuffer_ID].Tail = 0;
 	CBuffer_Instance[CBuffer_ID].Index = 0;
 	CBuffer_Instance[CBuffer_ID].Status = Empty;
+	return 0;
 }
 
 //Input about buffers from user
 
 Byte CBuffer_Init(void)
 {
-	//Get number of buffers
+	#if TEST
+	
+	No_of_CBuffers = 2;
+	CBuffer_Instance_Length[0] = 3;
+	CBuffer_Instance_Length[1] = 8;
+	
+	//Initialize each buffer
+	for(cbuffer_i = 0; cbuffer_i < No_of_CBuffers; cbuffer_i ++)
+	{
+		if(CBuffer_Assign(cbuffer_i))	return 1;
+	}
+	
+	return 0;
+	
+	#else
+	
+		//Get number of buffers
 	Output_String("\n\rEnter number of buffers: ");
 	Input_String(CBuffer_Input, 10, stdin);
 	cbuffer_j = 0;
@@ -86,12 +104,14 @@ Byte CBuffer_Init(void)
 		if(Error)		return 1;
 		CBuffer_Instance_Length[cbuffer_i] = value;
 	}
-
+	
 	//Initialize each buffer
 	for(cbuffer_i = 0; cbuffer_i < No_of_CBuffers; cbuffer_i ++)
 	{
-		CBuffer_Assign(cbuffer_i);
+		if(CBuffer_Assign(cbuffer_i))	Output_String("\n\rNull Pointer\n\r");
 	}
+	
+	#endif
 	return 0;
 }
 

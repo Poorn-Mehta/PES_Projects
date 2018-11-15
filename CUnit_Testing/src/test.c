@@ -100,7 +100,7 @@ void testBUFFERINIT(void)
 
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT(0 == CBuffer_Init();
+      CU_ASSERT(0 == CBuffer_Init());
    }
 }
 
@@ -108,7 +108,7 @@ void testBUFFERINIT(void)
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
  */
-int main()
+int t_main()
 {
    CU_pSuite pSuite = NULL;
 
