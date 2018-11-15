@@ -147,6 +147,94 @@ void test_CBuf_Partialfill(void)
    }
 }
 
+void test_CBuf_Continuouscomplex(void)
+{
+	Byte data;
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'P'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'Q'));
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('P' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'R'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'S'));
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('Q' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('R' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'T'));
+      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'U'));
+      CU_ASSERT(Overwriting == CBuffer_Byte_Write(0, 'V'));
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('V' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('T' == data);
+      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT('U' == data);
+      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
+   }
+}
+
+void test_CBuf_Numberofelements(void)
+{
+	Byte data;
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSERT(0 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'E'));
+      CU_ASSERT(1 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'F'));
+      CU_ASSERT(2 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'G'));
+      CU_ASSERT(3 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'H'));
+      CU_ASSERT(4 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'I'));
+      CU_ASSERT(5 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'J'));
+      CU_ASSERT(6 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'K'));
+      CU_ASSERT(7 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'L'));
+      CU_ASSERT(8 == CBuffer_Elements(1));
+	  CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'M'));
+	  CU_ASSERT(8 == CBuffer_Elements(1));
+      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'N'));
+      CU_ASSERT(8 == CBuffer_Elements(1));
+      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'O'));
+      CU_ASSERT(8 == CBuffer_Elements(1));
+      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'P'));
+      CU_ASSERT(8 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('M' == data);
+      CU_ASSERT(7 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('N' == data);
+      CU_ASSERT(6 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('O' == data);
+      CU_ASSERT(5 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('P' == data);
+      CU_ASSERT(4 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('I' == data);
+      CU_ASSERT(3 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('J' == data);
+      CU_ASSERT(2 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('K' == data);
+      CU_ASSERT(1 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('L' == data);
+      CU_ASSERT(0 == CBuffer_Elements(1));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
+   }
+}
+
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
@@ -173,7 +261,9 @@ int t_main()
 	   (NULL == CU_add_test(pSuite, "test of CBuffer_Init()", test_CBuf_Init)) ||
 	   (NULL == CU_add_test(pSuite, "test of CBuffer_Overwrite", test_CBuf_Overwrite)) ||
        (NULL == CU_add_test(pSuite, "test of CBuffer_Emptyread", test_CBuf_Emptyread)) ||
-	   (NULL == CU_add_test(pSuite, "test of CBuffer_Partialfill", test_CBuf_Partialfill)))
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Partialfill", test_CBuf_Partialfill)) ||
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Continuouscomplex", test_CBuf_Continuouscomplex)) || 
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Numberofelements", test_CBuf_Numberofelements)))
    {
       CU_cleanup_registry();
       return CU_get_error();
