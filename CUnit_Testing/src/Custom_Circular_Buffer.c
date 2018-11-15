@@ -242,6 +242,13 @@ DWord CBuffer_Elements(Byte CBuffer_ID)
 
 Byte CBuffer_Resize(Byte CBuffer_ID)
 {
+	#if TEST
+	
+	free(CBuffer_Instance[CBuffer_ID].Start_ptr);
+	CBuffer_Instance_Length[CBuffer_ID] = 4;
+	
+	#else
+	
 	Output_String("\n\rEnter new length of buffer%d: ", CBuffer_ID);
 	Input_String(CBuffer_Input, 10, stdin);
 	cbuffer_j = 0;
@@ -251,7 +258,10 @@ Byte CBuffer_Resize(Byte CBuffer_ID)
 	if(Error)		return 1;
 	free(CBuffer_Instance[CBuffer_ID].Start_ptr);
 	CBuffer_Instance_Length[CBuffer_ID] = value;
-	CBuffer_Assign(CBuffer_ID);
+	
+	#endif
+	
+	if(CBuffer_Assign(CBuffer_ID))		return 1;
 	return 0;
 }
 

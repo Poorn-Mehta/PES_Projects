@@ -27,6 +27,7 @@
 
 #include <stdio.h>
 #include <string.h>
+//#include <time.h>
 #include "CUnit/Basic.h"
 
 #include "Custom_Main.h"
@@ -41,6 +42,7 @@ static FILE* temp_file = NULL;
  */
 int init_suite1(void)
 {
+//	srand(time(0));
    if (NULL == (temp_file = fopen("temp.txt", "w+"))) {
       return -1;
    }
@@ -235,6 +237,42 @@ void test_CBuf_Numberofelements(void)
    }
 }
 
+void test_CBuf_Runtimelengthchange(void)
+{
+	Byte data;
+   if (NULL != temp_file) {
+      rewind(temp_file);
+      CU_ASSER(0 == CBuffer_Resize(1));
+      CU_ASSERT(0 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'W'));
+      CU_ASSERT(1 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'X'));
+      CU_ASSERT(2 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'Y'));
+      CU_ASSERT(3 == CBuffer_Elements(1));
+	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'Z'));
+      CU_ASSERT(4 == CBuffer_Elements(1));
+	  CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'E'));
+      CU_ASSERT(4 == CBuffer_Elements(1));
+	  CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'F'));
+      CU_ASSERT(4 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('E' == data);
+      CU_ASSERT(3 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('F' == data);
+      CU_ASSERT(2 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('Y' == data);
+      CU_ASSERT(1 == CBuffer_Elements(1));
+      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT('Z' == data);
+      CU_ASSERT(0 == CBuffer_Elements(1));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
+      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
+   }
+}
+
 /* The main() function for setting up and running the tests.
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
@@ -263,7 +301,8 @@ int t_main()
        (NULL == CU_add_test(pSuite, "test of CBuffer_Emptyread", test_CBuf_Emptyread)) ||
 	   (NULL == CU_add_test(pSuite, "test of CBuffer_Partialfill", test_CBuf_Partialfill)) ||
 	   (NULL == CU_add_test(pSuite, "test of CBuffer_Continuouscomplex", test_CBuf_Continuouscomplex)) || 
-	   (NULL == CU_add_test(pSuite, "test of CBuffer_Numberofelements", test_CBuf_Numberofelements)))
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Numberofelements", test_CBuf_Numberofelements)) ||
+	   (NULL == CU_add_test(pSuite, "test of CBuffer_Runtimelengthchange", test_CBuf_Runtimelengthchange)))
    {
       CU_cleanup_registry();
       return CU_get_error();
