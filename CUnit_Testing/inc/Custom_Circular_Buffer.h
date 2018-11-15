@@ -10,7 +10,7 @@
 
 #include "Custom_Main.h"
 
-#define TEST	1
+#define TEST	0
 
 
 #define Success			0

@@ -242,7 +242,7 @@ void test_CBuf_Runtimelengthchange(void)
 	Byte data;
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSER(0 == CBuffer_Resize(1));
+      CU_ASSERT(0 == CBuffer_Resize(1));
       CU_ASSERT(0 == CBuffer_Elements(1));
       CU_ASSERT(Success == CBuffer_Byte_Write(1, 'W'));
       CU_ASSERT(1 == CBuffer_Elements(1));
