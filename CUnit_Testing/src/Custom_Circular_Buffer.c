@@ -14,6 +14,7 @@ ptr_type Location, Continuous_Read;
 Byte CBuffer_Data, Error, No_of_CBuffers, cbuffer_i, cbuffer_j;
 char CBuffer_Input[10];
 DWord CBuffer_Instance_Length[Maximum_Buffers], value;
+Byte return_value;
 
 //Function to get values from string - SCANF can be used instead of FGETS
 
@@ -119,7 +120,6 @@ Byte CBuffer_Init(void)
 Byte CBuffer_Byte_Write(Byte CBuffer_ID, Byte data)
 {
 	Output_String("\n\r");
-	Byte return_value;
 
 	//If buffer is non empty and head meets the tail then buffer is full and overwriting
 	if((CBuffer_Instance[CBuffer_ID].Status != Empty) && (CBuffer_Instance[CBuffer_ID].Head == CBuffer_Instance[CBuffer_ID].Tail))
@@ -127,7 +127,10 @@ Byte CBuffer_Byte_Write(Byte CBuffer_ID, Byte data)
 		CBuffer_Instance[CBuffer_ID].Status = Full;
 		return_value = Overwriting;
 	}
-	else	return_value = Success;
+	else
+	{
+		if(return_value != Overwriting)		return_value = Success;
+	}	
 
 	//Write data using start pointer + relative address from head
 	*(CBuffer_Instance[CBuffer_ID].Start_ptr + CBuffer_Instance[CBuffer_ID].Head) = data;
@@ -154,6 +157,7 @@ Byte CBuffer_Byte_Write(Byte CBuffer_ID, Byte data)
 Byte CBuffer_Byte_Read(Byte CBuffer_ID, Byte *address)
 {
 	Output_String("\n\r");
+	if(return_value == Overwriting)		return_value = Success;
 
 	//If read the whole buffer then mark it as empty
 	if(Continuous_Read == CBuffer_Instance[CBuffer_ID].Length)
