@@ -84,7 +84,7 @@ void test_CBuf_Overwrite(void)
 {
    if (NULL != temp_file) {
 //      rewind(temp_file);
-      temp = rand() % (len1+1);
+      temp = (rand() % (len1+1)) + 1;
       fprintf(temp_file, "\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
       {
@@ -105,7 +105,7 @@ void test_CBuf_Emptyread(void)
 {
    if (NULL != temp_file) {
 //      rewind(temp_file);
-      temp = rand() % (len1+1);
+      temp = (rand() % (len1+1)) + 1;
 	  fprintf(temp_file, "\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
       {
@@ -126,7 +126,7 @@ void test_CBuf_Partialfill(void)
 	Byte data;
    if (NULL != temp_file) {
 //     rewind(temp_file);
-	  temp = rand() % len1;
+	  temp = (rand() % (len1-1)) + 1;
 	  fprintf(temp_file, "\nCBuffer Partialfill Test\nWriting %d bytes in Buffer0\n", temp);
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
@@ -189,7 +189,7 @@ void test_CBuf_Numberofelements(void)
 	Byte data;
    if (NULL != temp_file) {
 //      rewind(temp_file);
-	  temp = rand() % (len2+1);
+	  temp = (rand() % (len2+1)) + 1;
 	  fprintf(temp_file, "\nBuffer Numberofelements Test\nWriting & Reading %d bytes of data from Buffer1\n", (len2+temp));
 	  CU_ASSERT(0 == CBuffer_Elements(1));
       fprintf(temp_file, "\nNumber of Elements in Buffer1 are 0");
