@@ -1,30 +1,40 @@
 
-CBuffer Emptyread Test
-Reading 23 bytes from Buffer0
+CBuffer Init Test
+Buffer0 Length: 9	Buffer1 Length: 3
 
-Read [ from 0 in Buffer0
-Read P from 1 in Buffer0
-Read è from 2 in Buffer0
-Read ö from 3 in Buffer0
-Read Z from 4 in Buffer0
-Read . from 5 in Buffer0
-Read w from 6 in Buffer0
-Read Ñ from 7 in Buffer0
-Read I from 8 in Buffer0
-Read g from 9 in Buffer0
-Read ä from 10 in Buffer0
-Read : from 11 in Buffer0
-Read ê from 12 in Buffer0
+CBuffer Overwrite Test
+Writing 18 bytes in Buffer0
+
+Wrote d at 0 in Buffer0
+Wrote P at 1 in Buffer0
+Wrote - at 2 in Buffer0
+Wrote 6 at 3 in Buffer0
+Wrote Ö at 4 in Buffer0
+Wrote ä at 5 in Buffer0
+Wrote 2 at 6 in Buffer0
+Wrote = at 7 in Buffer0
+Wrote T at 8 in Buffer0
+Overwrote c at 0 in Buffer0
+Overwrote ~ at 1 in Buffer0
+Overwrote , at 2 in Buffer0
+Overwrote é at 3 in Buffer0
+Overwrote Y at 4 in Buffer0
+Overwrote y at 5 in Buffer0
+Overwrote X at 6 in Buffer0
+Overwrote B at 7 in Buffer0
+Overwrote W at 8 in Buffer0
+CBuffer Emptyread Test
+Reading 12 bytes from Buffer0
+
+Read c from 0 in Buffer0
+Read ~ from 1 in Buffer0
+Read , from 2 in Buffer0
+Read é from 3 in Buffer0
+Read Y from 4 in Buffer0
+Read y from 5 in Buffer0
+Read X from 6 in Buffer0
+Read B from 7 in Buffer0
+Read W from 8 in Buffer0
 Buffer0 Empty
 Buffer0 Empty
 Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty
-Buffer0 Empty 5 in Buffer0
-Overwrote w at 6 in Buffer0
-Overwrote Ñ at 7 in Buffer0
-Overwrote I at 8 in Buffer0

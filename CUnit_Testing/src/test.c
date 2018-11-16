@@ -106,7 +106,7 @@ void test_CBuf_Init(void)
 {
    if (NULL != temp_file) {
       rewind(temp_file);
-      printf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
+      fprintf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
       CU_ASSERT_FATAL(0 == CBuffer_Init(len1, len2));
    }
 }
@@ -114,7 +114,7 @@ void test_CBuf_Init(void)
 void test_CBuf_Overwrite(void)
 {
    if (NULL != temp_file) {
-      rewind(temp_file);
+//      rewind(temp_file);
       temp = rand() % (len1+1);
       fprintf(temp_file, "\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
@@ -135,7 +135,7 @@ void test_CBuf_Overwrite(void)
 void test_CBuf_Emptyread(void)
 {
    if (NULL != temp_file) {
-      rewind(temp_file);
+//      rewind(temp_file);
       temp = rand() % (len1+1);
       fprintf(temp_file, "\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
@@ -156,7 +156,7 @@ void test_CBuf_Partialfill(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-      rewind(temp_file);
+//     rewind(temp_file);
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'X'));
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'Y'));
       CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
@@ -171,7 +171,7 @@ void test_CBuf_Continuouscomplex(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-      rewind(temp_file);
+//      rewind(temp_file);
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'P'));
       CU_ASSERT(Success == CBuffer_Byte_Write(0, 'Q'));
       CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
@@ -200,7 +200,7 @@ void test_CBuf_Numberofelements(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-      rewind(temp_file);
+//      rewind(temp_file);
       CU_ASSERT(0 == CBuffer_Elements(1));
       CU_ASSERT(Success == CBuffer_Byte_Write(1, 'E'));
       CU_ASSERT(1 == CBuffer_Elements(1));
@@ -259,7 +259,7 @@ void test_CBuf_Runtimelengthchange(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-      rewind(temp_file);
+//      rewind(temp_file);
       CU_ASSERT(0 == CBuffer_Resize(1, 4));
       CU_ASSERT(0 == CBuffer_Elements(1));
       CU_ASSERT(Success == CBuffer_Byte_Write(1, 'W'));
