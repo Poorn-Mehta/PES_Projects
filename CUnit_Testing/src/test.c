@@ -75,7 +75,7 @@ void test_CBuf_Init(void)
 {
    if (NULL != temp_file) {
       rewind(temp_file);
-      fprintf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
+      fprintf(temp_file, "\n\n\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
       CU_ASSERT_FATAL(0 == CBuffer_Init(len1, len2));
    }
 }
@@ -83,9 +83,8 @@ void test_CBuf_Init(void)
 void test_CBuf_Overwrite(void)
 {
    if (NULL != temp_file) {
-//      rewind(temp_file);
       temp = (rand() % (len1+1)) + 1;
-      fprintf(temp_file, "\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
+      fprintf(temp_file, "\n\n\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
@@ -104,9 +103,8 @@ void test_CBuf_Overwrite(void)
 void test_CBuf_Emptyread(void)
 {
    if (NULL != temp_file) {
-//      rewind(temp_file);
       temp = (rand() % (len1+1)) + 1;
-	  fprintf(temp_file, "\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
+	  fprintf(temp_file, "\n\n\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
       for(test_i = 0; test_i < len1; test_i ++)
       {
       	CU_ASSERT(Success == CBuffer_Byte_Read(0, &r_data[test_i]));
@@ -125,9 +123,8 @@ void test_CBuf_Partialfill(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-//     rewind(temp_file);
 	  temp = (rand() % (len1-1)) + 1;
-	  fprintf(temp_file, "\nCBuffer Partialfill Test\nWriting %d bytes in Buffer0\n", temp);
+	  fprintf(temp_file, "\n\n\nCBuffer Partialfill Test\nWriting %d bytes in Buffer0\n", temp);
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
@@ -145,13 +142,6 @@ void test_CBuf_Partialfill(void)
       	CU_ASSERT(Empty == CBuffer_Byte_Read(0, &r_data[test_i]));
         fprintf(temp_file, "\nBuffer0 Empty");
 	  }
-//      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'X'));
-//      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'Y'));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
-//      CU_ASSERT('X' == data);
-//      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
-//      CU_ASSERT('Y' == data);
-//      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
    }
 }
 
@@ -188,9 +178,8 @@ void test_CBuf_Numberofelements(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-//      rewind(temp_file);
 	  temp = (rand() % (len2+1)) + 1;
-	  fprintf(temp_file, "\nBuffer Numberofelements Test\nWriting & Reading %d bytes of data from Buffer1\n", (len2+temp));
+	  fprintf(temp_file, "\n\n\nBuffer Numberofelements Test\nWriting & Reading %d bytes of data from Buffer1\n", (len2+temp));
 	  CU_ASSERT(0 == CBuffer_Elements(1));
       fprintf(temp_file, "\nNumber of Elements in Buffer1 are 0");
 	  for(test_i = 0; test_i < len2; test_i ++)
@@ -224,57 +213,6 @@ void test_CBuf_Numberofelements(void)
 		CU_ASSERT(0 == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d");
 	  }
-//      CU_ASSERT(0 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'E'));
-//      CU_ASSERT(1 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'F'));
-//      CU_ASSERT(2 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Write(1, 'G'));
-//      CU_ASSERT(3 == CBuffer_Elements(1));
-//	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'H'));
-//      CU_ASSERT(4 == CBuffer_Elements(1));
-//	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'I'));
-//      CU_ASSERT(5 == CBuffer_Elements(1));
-//	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'J'));
-//      CU_ASSERT(6 == CBuffer_Elements(1));
-//	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'K'));
-//      CU_ASSERT(7 == CBuffer_Elements(1));
-//	  CU_ASSERT(Success == CBuffer_Byte_Write(1, 'L'));
-//      CU_ASSERT(8 == CBuffer_Elements(1));
-//	  CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'M'));
-//	  CU_ASSERT(8 == CBuffer_Elements(1));
-//      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'N'));
-//      CU_ASSERT(8 == CBuffer_Elements(1));
-//      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'O'));
-//      CU_ASSERT(8 == CBuffer_Elements(1));
-//      CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, 'P'));
-//      CU_ASSERT(8 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('M' == data);
-//      CU_ASSERT(7 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('N' == data);
-//      CU_ASSERT(6 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('O' == data);
-//      CU_ASSERT(5 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('P' == data);
-//      CU_ASSERT(4 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('I' == data);
-//      CU_ASSERT(3 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('J' == data);
-//      CU_ASSERT(2 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('K' == data);
-//      CU_ASSERT(1 == CBuffer_Elements(1));
-//      CU_ASSERT(Success == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT('L' == data);
-//      CU_ASSERT(0 == CBuffer_Elements(1));
-//      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
-//      CU_ASSERT(Empty == CBuffer_Byte_Read(1, &data));
    }
 }
 
@@ -284,7 +222,7 @@ void test_CBuf_Runtimelengthchange(void)
    if (NULL != temp_file) {
 //      rewind(temp_file);
 	  temp = rand() % (nlen+1);
-	  fprintf(temp_file, "\nBuffer Runtimelengthchange Test\nNew length of Buffer1 is %d\n", nlen);
+	  fprintf(temp_file, "\n\n\nBuffer Runtimelengthchange Test\nNew length of Buffer1 is %d\n", nlen);
 	  CU_ASSERT(0 == CBuffer_Resize(1, nlen));
 	  fprintf(temp_file, "\nWriting & Reading %d bytes of data from Buffer1\n", (nlen+temp));
 	  CU_ASSERT(0 == CBuffer_Elements(1));
@@ -355,7 +293,7 @@ void test_CBuf_Runtimelengthchange(void)
  * Returns a CUE_SUCCESS on successful running, another
  * CUnit error code on failure.
  */
-int t_main()
+int main()
 {
 	srand(time(0));
     len1 = rand() % (Max_Len+1);

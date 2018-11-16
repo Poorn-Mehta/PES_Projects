@@ -22,11 +22,11 @@ void FGETS(char *array_to_write, Byte bytes, FILE *stream)
 
 int main(void)
 {
-	#if		TEST
-	
-	return (t_main());
-	
-	#else
+//	#if		TEST
+//	
+//	return (t_main());
+//	
+//	#else
 
 #ifdef FRDM
     // Initialize standard SDK demo application pins
@@ -172,5 +172,5 @@ int main(void)
 	Output_String("\n\rElements in 1: %d\n\r", CBuffer_Elements(1));
 	CBuffer_Operation(1, Read, 0, &CBuffer_Data);
     return 0;
-    #endif
+//    #endif
 }
