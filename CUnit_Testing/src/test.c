@@ -201,7 +201,7 @@ void test_CBuf_Numberofelements(void)
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
       	CU_ASSERT(Overwriting == CBuffer_Byte_Write(1, w_data[test_i]));
       	fprintf(temp_file, "\nOverwrote %c at %d in Buffer0", w_data[test_i], test_i);
-      	CU_ASSERT((len2 == CBuffer_Elements(1));
+      	CU_ASSERT(len2 == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", len2);
 	  }
       for(test_i = 0; test_i < len2; test_i ++)
