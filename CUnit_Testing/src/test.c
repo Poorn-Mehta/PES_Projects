@@ -106,7 +106,7 @@ void test_CBuf_Init(void)
 {
    if (NULL != temp_file) {
       rewind(temp_file);
-      fprintf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
+      printf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
       CU_ASSERT_FATAL(0 == CBuffer_Init(len1, len2));
    }
 }
