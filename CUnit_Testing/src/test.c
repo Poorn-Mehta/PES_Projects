@@ -211,7 +211,7 @@ void test_CBuf_Numberofelements(void)
       	CU_ASSERT(Empty == CBuffer_Byte_Read(1, &r_data[test_i]));
         fprintf(temp_file, "\nBuffer0 Empty");
 		CU_ASSERT(0 == CBuffer_Elements(1));
-      	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d");
+      	fprintf(temp_file, "\nNumber of Elements in Buffer1 are 0");
 	  }
    }
 }
