@@ -10,7 +10,7 @@
 
 #include "Custom_Main.h"
 
-#define TEST	0
+#define TEST	1
 
 
 #define Success			0
@@ -43,12 +43,17 @@ extern DWord CBuffer_Instance_Length[Maximum_Buffers], value;
 
 void String_to_Decimal(char *stod_ptr);
 Byte CBuffer_Assign(Byte CBuffer_ID);
+#if TEST
+Byte CBuffer_Init(DWord len1, DWord len2);
+Byte CBuffer_Resize(Byte CBuffer_ID, DWord nlen);
+#else
 Byte CBuffer_Init(void);
+Byte CBuffer_Resize(Byte CBuffer_ID);
+#endif
 Byte CBuffer_Byte_Write(Byte CBuffer_ID, Byte data);
 Byte CBuffer_Byte_Read(Byte CBuffer_ID, Byte *address);
 void CBuffer_Operation(Byte CBuffer_ID, Byte type, Byte data, Byte *address);
 DWord CBuffer_Elements(Byte CBuffer_ID);
-Byte CBuffer_Resize(Byte CBuffer_ID);
 
 
 

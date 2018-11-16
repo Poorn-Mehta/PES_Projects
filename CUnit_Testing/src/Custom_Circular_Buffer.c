@@ -64,14 +64,17 @@ Byte CBuffer_Assign(Byte CBuffer_ID)
 }
 
 //Input about buffers from user
-
+#if TEST
+Byte CBuffer_Init(DWord len1, DWord len2)
+#else
 Byte CBuffer_Init(void)
+#endif
 {
 	#if TEST
 	
 	No_of_CBuffers = 2;
-	CBuffer_Instance_Length[0] = 3;
-	CBuffer_Instance_Length[1] = 8;
+	CBuffer_Instance_Length[0] = len1;
+	CBuffer_Instance_Length[1] = len2;
 	
 	//Initialize each buffer
 	for(cbuffer_i = 0; cbuffer_i < No_of_CBuffers; cbuffer_i ++)
@@ -239,13 +242,16 @@ DWord CBuffer_Elements(Byte CBuffer_ID)
 }
 
 //resizing existing buffer
-
+#if TEST
+Byte CBuffer_Resize(Byte CBuffer_ID, DWord nlen)
+#else
 Byte CBuffer_Resize(Byte CBuffer_ID)
+#endif
 {
 	#if TEST
 	
 	free(CBuffer_Instance[CBuffer_ID].Start_ptr);
-	CBuffer_Instance_Length[CBuffer_ID] = 4;
+	CBuffer_Instance_Length[CBuffer_ID] = nlen;
 	
 	#else
 	

@@ -27,7 +27,7 @@
 
 #include <stdio.h>
 #include <string.h>
-//#include <time.h>
+#include <time.h>
 #include "CUnit/Basic.h"
 
 #include "Custom_Main.h"
@@ -35,14 +35,17 @@
 
 /* Pointer to the file used by the tests. */
 static FILE* temp_file = NULL;
-
+uint32_t len1, len2, nlen;
+uint8_t w_data[20], r_data[20], test_i, temp;
+#define Max_Data	0x7E  // till ~
+#define Min_Data	0x21 //from !
+#define Max_Len		20
 /* The suite initialization function.
  * Opens the temporary file used by the tests.
  * Returns zero on success, non-zero otherwise.
  */
 int init_suite1(void)
 {
-//	srand(time(0));
    if (NULL == (temp_file = fopen("temp.txt", "w+"))) {
       return -1;
    }
@@ -103,7 +106,8 @@ void test_CBuf_Init(void)
 {
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT_FATAL(0 == CBuffer_Init());
+      fprintf(temp_file, "\nCBuffer Init Test\nBuffer0 Length: %d\tBuffer1 Length: %d\n", len1, len2);
+      CU_ASSERT_FATAL(0 == CBuffer_Init(len1, len2));
    }
 }
 
@@ -111,26 +115,40 @@ void test_CBuf_Overwrite(void)
 {
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'A'));
-      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'B'));
-      CU_ASSERT(Success == CBuffer_Byte_Write(0, 'C'));
-      CU_ASSERT(Overwriting == CBuffer_Byte_Write(0, 'D'));
+      temp = rand() % (len1+1);
+      fprintf(temp_file, "\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
+      for(test_i = 0; test_i < len1; test_i ++)
+      {
+      	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
+      	CU_ASSERT(Success == CBuffer_Byte_Write(0, w_data[test_i]));
+      	fprintf(temp_file, "\nWrote %c at %d in Buffer0", w_data[test_i], test_i);
+	  }
+	  for(test_i = 0; test_i < temp; test_i ++)
+      {
+      	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
+      	CU_ASSERT(Overwriting == CBuffer_Byte_Write(0, w_data[test_i]));
+      	fprintf(temp_file, "\nOverwrote %c at %d in Buffer0", w_data[test_i], test_i);
+	  }
    }
 }
 
 void test_CBuf_Emptyread(void)
 {
-	Byte data;
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
-      CU_ASSERT('D' == data);
-      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
-      CU_ASSERT('B' == data);
-      CU_ASSERT(Success == CBuffer_Byte_Read(0, &data));
-      CU_ASSERT('C' == data);
-      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
-      CU_ASSERT(Empty == CBuffer_Byte_Read(0, &data));
+      temp = rand() % (len1+1);
+      fprintf(temp_file, "\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
+      for(test_i = 0; test_i < len1; test_i ++)
+      {
+      	CU_ASSERT(Success == CBuffer_Byte_Read(0, &r_data[test_i]));
+        CU_ASSERT(w_data[test_i] == r_data[test_i]);
+        fprintf(temp_file, "\nRead %c from %d in Buffer0", r_data[test_i], test_i);
+	  }
+	  for(test_i = 0; test_i < temp; test_i ++)
+      {
+      	CU_ASSERT(Empty == CBuffer_Byte_Read(0, &r_data[test_i]));
+        fprintf(temp_file, "\nBuffer0 Empty");
+	  }
    }
 }
 
@@ -242,7 +260,7 @@ void test_CBuf_Runtimelengthchange(void)
 	Byte data;
    if (NULL != temp_file) {
       rewind(temp_file);
-      CU_ASSERT(0 == CBuffer_Resize(1));
+      CU_ASSERT(0 == CBuffer_Resize(1, 4));
       CU_ASSERT(0 == CBuffer_Elements(1));
       CU_ASSERT(Success == CBuffer_Byte_Write(1, 'W'));
       CU_ASSERT(1 == CBuffer_Elements(1));
@@ -279,6 +297,11 @@ void test_CBuf_Runtimelengthchange(void)
  */
 int t_main()
 {
+	srand(time(0));
+    len1 = rand() % (Max_Len+1);
+    len2 = rand() % (Max_Len+1);
+    nlen = rand() % (Max_Len+1);
+	
    CU_pSuite pSuite = NULL;
 
    /* initialize the CUnit test registry */
