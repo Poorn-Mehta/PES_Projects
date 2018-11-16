@@ -22,7 +22,7 @@ $(ODIR)/%.o: %.c $(DEPS)
 project: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 	
-test: $(OBJ2) ./test
+test: $(OBJ2)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
