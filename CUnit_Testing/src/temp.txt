@@ -1,2 +1,30 @@
-Q
-i1 = 10
+
+CBuffer Emptyread Test
+Reading 23 bytes from Buffer0
+
+Read [ from 0 in Buffer0
+Read P from 1 in Buffer0
+Read è from 2 in Buffer0
+Read ö from 3 in Buffer0
+Read Z from 4 in Buffer0
+Read . from 5 in Buffer0
+Read w from 6 in Buffer0
+Read Ñ from 7 in Buffer0
+Read I from 8 in Buffer0
+Read g from 9 in Buffer0
+Read ä from 10 in Buffer0
+Read : from 11 in Buffer0
+Read ê from 12 in Buffer0
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty 5 in Buffer0
+Overwrote w at 6 in Buffer0
+Overwrote Ñ at 7 in Buffer0
+Overwrote I at 8 in Buffer0
