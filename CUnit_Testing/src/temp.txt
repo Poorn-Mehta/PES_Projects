@@ -2,83 +2,208 @@
 
 
 CBuffer Init Test
-Buffer0 Length: 4	Buffer1 Length: 7
+Buffer0 Length: 20	Buffer1 Length: 19
 
 
 
 CBuffer Overwrite Test
-Writing 7 bytes in Buffer0
+Writing 39 bytes in Buffer0
 
-Wrote # at 0 in Buffer0
-Wrote R at 1 in Buffer0
-Wrote ` at 2 in Buffer0
-Wrote U at 3 in Buffer0
-Overwrote Z at 0 in Buffer0
-Overwrote › at 1 in Buffer0
-Overwrote ) at 2 in Buffer0
+Wrote ) at 0 in Buffer0
+Wrote … at 1 in Buffer0
+Wrote ƒ at 2 in Buffer0
+Wrote  at 3 in Buffer0
+Wrote p at 4 in Buffer0
+Wrote % at 5 in Buffer0
+Wrote d at 6 in Buffer0
+Wrote € at 7 in Buffer0
+Wrote l at 8 in Buffer0
+Wrote f at 9 in Buffer0
+Wrote < at 10 in Buffer0
+Wrote R at 11 in Buffer0
+Wrote ’ at 12 in Buffer0
+Wrote › at 13 in Buffer0
+Wrote m at 14 in Buffer0
+Wrote : at 15 in Buffer0
+Wrote # at 16 in Buffer0
+Wrote  at 17 in Buffer0
+Wrote 5 at 18 in Buffer0
+Wrote l at 19 in Buffer0
+Overwrote K at 0 in Buffer0
+Overwrote = at 1 in Buffer0
+Overwrote ( at 2 in Buffer0
+Overwrote „ at 3 in Buffer0
+Overwrote R at 4 in Buffer0
+Overwrote  at 5 in Buffer0
+Overwrote C at 6 in Buffer0
+Overwrote V at 7 in Buffer0
+Overwrote 8 at 8 in Buffer0
+Overwrote • at 9 in Buffer0
+Overwrote D at 10 in Buffer0
+Overwrote @ at 11 in Buffer0
+Overwrote z at 12 in Buffer0
+Overwrote ' at 13 in Buffer0
+Overwrote – at 14 in Buffer0
+Overwrote J at 15 in Buffer0
+Overwrote , at 16 in Buffer0
+Overwrote Z at 17 in Buffer0
+Overwrote # at 18 in Buffer0
 
 
 CBuffer Emptyread Test
-Reading 7 bytes from Buffer0
+Reading 31 bytes from Buffer0
 
-Read Z from 0 in Buffer0
-Read › from 1 in Buffer0
-Read ) from 2 in Buffer0
-Read U from 3 in Buffer0
+Read K from 0 in Buffer0
+Read = from 1 in Buffer0
+Read ( from 2 in Buffer0
+Read „ from 3 in Buffer0
+Read R from 4 in Buffer0
+Read  from 5 in Buffer0
+Read C from 6 in Buffer0
+Read V from 7 in Buffer0
+Read 8 from 8 in Buffer0
+Read • from 9 in Buffer0
+Read D from 10 in Buffer0
+Read @ from 11 in Buffer0
+Read z from 12 in Buffer0
+Read ' from 13 in Buffer0
+Read – from 14 in Buffer0
+Read J from 15 in Buffer0
+Read , from 16 in Buffer0
+Read Z from 17 in Buffer0
+Read # from 18 in Buffer0
+Read l from 19 in Buffer0
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
 Buffer0 Empty
 Buffer0 Empty
 Buffer0 Empty
 
 
 CBuffer Partialfill Test
-Writing 1 bytes in Buffer0
+Writing 6 bytes in Buffer0
 
-Wrote ‡ at 0 in Buffer0
-Read ‡ from 0 in Buffer0
+Wrote > at 0 in Buffer0
+Wrote ! at 1 in Buffer0
+Wrote Š at 2 in Buffer0
+Wrote 1 at 3 in Buffer0
+Wrote f at 4 in Buffer0
+Wrote $ at 5 in Buffer0
+Read > from 0 in Buffer0
+Read ! from 1 in Buffer0
+Read Š from 2 in Buffer0
+Read 1 from 3 in Buffer0
+Read f from 4 in Buffer0
+Read $ from 5 in Buffer0
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
+Buffer0 Empty
 Buffer0 Empty
 Buffer0 Empty
 Buffer0 Empty
 
 
 Buffer Numberofelements Test
-Writing & Reading 11 bytes of data from Buffer1
+Writing & Reading 23 bytes of data from Buffer1
 
 Number of Elements in Buffer1 are 0
-Wrote i at 0 in Buffer1
+Wrote V at 0 in Buffer1
 Number of Elements in Buffer1 are 1
-Wrote € at 1 in Buffer1
+Wrote 0 at 1 in Buffer1
 Number of Elements in Buffer1 are 2
-Wrote < at 2 in Buffer1
+Wrote n at 2 in Buffer1
 Number of Elements in Buffer1 are 3
-Wrote … at 3 in Buffer1
+Wrote y at 3 in Buffer1
 Number of Elements in Buffer1 are 4
-Wrote  at 4 in Buffer1
+Wrote L at 4 in Buffer1
 Number of Elements in Buffer1 are 5
-Wrote ‰ at 5 in Buffer1
+Wrote v at 5 in Buffer1
 Number of Elements in Buffer1 are 6
-Wrote z at 6 in Buffer1
+Wrote ] at 6 in Buffer1
 Number of Elements in Buffer1 are 7
-Overwrote L at 0 in Buffer1
+Wrote u at 7 in Buffer1
+Number of Elements in Buffer1 are 8
+Wrote U at 8 in Buffer1
+Number of Elements in Buffer1 are 9
+Wrote € at 9 in Buffer1
+Number of Elements in Buffer1 are 10
+Wrote , at 10 in Buffer1
+Number of Elements in Buffer1 are 11
+Wrote l at 11 in Buffer1
+Number of Elements in Buffer1 are 12
+Wrote u at 12 in Buffer1
+Number of Elements in Buffer1 are 13
+Wrote O at 13 in Buffer1
+Number of Elements in Buffer1 are 14
+Wrote ‹ at 14 in Buffer1
+Number of Elements in Buffer1 are 15
+Wrote G at 15 in Buffer1
+Number of Elements in Buffer1 are 16
+Wrote M at 16 in Buffer1
+Number of Elements in Buffer1 are 17
+Wrote y at 17 in Buffer1
+Number of Elements in Buffer1 are 18
+Wrote p at 18 in Buffer1
+Number of Elements in Buffer1 are 19
+Overwrote P at 0 in Buffer1
+Number of Elements in Buffer1 are 19
+Overwrote 4 at 1 in Buffer1
+Number of Elements in Buffer1 are 19
+Overwrote j at 2 in Buffer1
+Number of Elements in Buffer1 are 19
+Overwrote ž at 3 in Buffer1
+Number of Elements in Buffer1 are 19
+Read P from 0 in Buffer1
+Number of Elements in Buffer1 are 18
+Read 4 from 1 in Buffer1
+Number of Elements in Buffer1 are 17
+Read j from 2 in Buffer1
+Number of Elements in Buffer1 are 16
+Read ž from 3 in Buffer1
+Number of Elements in Buffer1 are 15
+Read L from 4 in Buffer1
+Number of Elements in Buffer1 are 14
+Read v from 5 in Buffer1
+Number of Elements in Buffer1 are 13
+Read ] from 6 in Buffer1
+Number of Elements in Buffer1 are 12
+Read u from 7 in Buffer1
+Number of Elements in Buffer1 are 11
+Read U from 8 in Buffer1
+Number of Elements in Buffer1 are 10
+Read € from 9 in Buffer1
+Number of Elements in Buffer1 are 9
+Read , from 10 in Buffer1
+Number of Elements in Buffer1 are 8
+Read l from 11 in Buffer1
 Number of Elements in Buffer1 are 7
-Overwrote n at 1 in Buffer1
-Number of Elements in Buffer1 are 7
-Overwrote p at 2 in Buffer1
-Number of Elements in Buffer1 are 7
-Overwrote ] at 3 in Buffer1
-Number of Elements in Buffer1 are 7
-Read L from 0 in Buffer1
+Read u from 12 in Buffer1
 Number of Elements in Buffer1 are 6
-Read n from 1 in Buffer1
+Read O from 13 in Buffer1
 Number of Elements in Buffer1 are 5
-Read p from 2 in Buffer1
+Read ‹ from 14 in Buffer1
 Number of Elements in Buffer1 are 4
-Read ] from 3 in Buffer1
+Read G from 15 in Buffer1
 Number of Elements in Buffer1 are 3
-Read  from 4 in Buffer1
+Read M from 16 in Buffer1
 Number of Elements in Buffer1 are 2
-Read ‰ from 5 in Buffer1
+Read y from 17 in Buffer1
 Number of Elements in Buffer1 are 1
-Read z from 6 in Buffer1
+Read p from 18 in Buffer1
 Number of Elements in Buffer1 are 0
 Buffer0 Empty
 Number of Elements in Buffer1 are 0
@@ -91,62 +216,114 @@ Number of Elements in Buffer1 are 0
 
 
 Buffer Runtimelengthchange Test
-New length of Buffer1 is 11
+New length of Buffer1 is 18
 
-Writing & Reading 15 bytes of data from Buffer1
+Writing & Reading 28 bytes of data from Buffer1
 
 Number of Elements in Buffer1 are 0
-Wrote ‰ at 0 in Buffer1
+Wrote ˆ at 0 in Buffer1
 Number of Elements in Buffer1 are 1
-Wrote  at 1 in Buffer1
+Wrote Ÿ at 1 in Buffer1
 Number of Elements in Buffer1 are 2
-Wrote R at 2 in Buffer1
+Wrote • at 2 in Buffer1
 Number of Elements in Buffer1 are 3
-Wrote d at 3 in Buffer1
+Wrote  at 3 in Buffer1
 Number of Elements in Buffer1 are 4
-Wrote ' at 4 in Buffer1
+Wrote e at 4 in Buffer1
 Number of Elements in Buffer1 are 5
-Wrote S at 5 in Buffer1
+Wrote  at 5 in Buffer1
 Number of Elements in Buffer1 are 6
-Wrote q at 6 in Buffer1
+Wrote › at 6 in Buffer1
 Number of Elements in Buffer1 are 7
-Wrote 2 at 7 in Buffer1
+Wrote ’ at 7 in Buffer1
 Number of Elements in Buffer1 are 8
-Wrote U at 8 in Buffer1
+Wrote Ÿ at 8 in Buffer1
 Number of Elements in Buffer1 are 9
-Wrote # at 9 in Buffer1
+Wrote i at 9 in Buffer1
 Number of Elements in Buffer1 are 10
-Wrote r at 10 in Buffer1
+Wrote k at 10 in Buffer1
 Number of Elements in Buffer1 are 11
-Overwrote ‰ at 0 in Buffer0
-Number of Elements in Buffer1 are 11
-Overwrote T at 1 in Buffer0
-Number of Elements in Buffer1 are 11
-Overwrote e at 2 in Buffer0
-Number of Elements in Buffer1 are 11
+Wrote C at 11 in Buffer1
+Number of Elements in Buffer1 are 12
+Wrote 7 at 12 in Buffer1
+Number of Elements in Buffer1 are 13
+Wrote ! at 13 in Buffer1
+Number of Elements in Buffer1 are 14
+Wrote  at 14 in Buffer1
+Number of Elements in Buffer1 are 15
+Wrote c at 15 in Buffer1
+Number of Elements in Buffer1 are 16
+Wrote x at 16 in Buffer1
+Number of Elements in Buffer1 are 17
+Wrote › at 17 in Buffer1
+Number of Elements in Buffer1 are 18
+Overwrote / at 0 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote E at 1 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote B at 2 in Buffer0
+Number of Elements in Buffer1 are 18
 Overwrote ‘ at 3 in Buffer0
-Number of Elements in Buffer1 are 11
-Read ‰ from 0 in Buffer1
-Number of Elements in Buffer1 are 10
-Read T from 1 in Buffer1
-Number of Elements in Buffer1 are 9
-Read e from 2 in Buffer1
-Number of Elements in Buffer1 are 8
+Number of Elements in Buffer1 are 18
+Overwrote k at 4 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote f at 5 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote k at 6 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote 3 at 7 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote – at 8 in Buffer0
+Number of Elements in Buffer1 are 18
+Overwrote v at 9 in Buffer0
+Number of Elements in Buffer1 are 18
+Read / from 0 in Buffer1
+Number of Elements in Buffer1 are 17
+Read E from 1 in Buffer1
+Number of Elements in Buffer1 are 16
+Read B from 2 in Buffer1
+Number of Elements in Buffer1 are 15
 Read ‘ from 3 in Buffer1
+Number of Elements in Buffer1 are 14
+Read k from 4 in Buffer1
+Number of Elements in Buffer1 are 13
+Read f from 5 in Buffer1
+Number of Elements in Buffer1 are 12
+Read k from 6 in Buffer1
+Number of Elements in Buffer1 are 11
+Read 3 from 7 in Buffer1
+Number of Elements in Buffer1 are 10
+Read – from 8 in Buffer1
+Number of Elements in Buffer1 are 9
+Read v from 9 in Buffer1
+Number of Elements in Buffer1 are 8
+Read k from 10 in Buffer1
 Number of Elements in Buffer1 are 7
-Read ' from 4 in Buffer1
+Read C from 11 in Buffer1
 Number of Elements in Buffer1 are 6
-Read S from 5 in Buffer1
+Read 7 from 12 in Buffer1
 Number of Elements in Buffer1 are 5
-Read q from 6 in Buffer1
+Read ! from 13 in Buffer1
 Number of Elements in Buffer1 are 4
-Read 2 from 7 in Buffer1
+Read  from 14 in Buffer1
 Number of Elements in Buffer1 are 3
-Read U from 8 in Buffer1
+Read c from 15 in Buffer1
 Number of Elements in Buffer1 are 2
-Read # from 9 in Buffer1
+Read x from 16 in Buffer1
 Number of Elements in Buffer1 are 1
-Read r from 10 in Buffer1
+Read › from 17 in Buffer1
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
+Number of Elements in Buffer1 are 0
+Buffer1 Empty
 Number of Elements in Buffer1 are 0
 Buffer1 Empty
 Number of Elements in Buffer1 are 0
