@@ -199,6 +199,11 @@ Byte CBuffer_Byte_Read(Byte CBuffer_ID, Byte *address)
 
 	//increases continuous read variable
 	Continuous_Read += 1;
+	
+	if(CBuffer_Instance[CBuffer_ID].Tail == CBuffer_Instance[CBuffer_ID].Head)
+	{
+		if(CBuffer_Instance[CBuffer_ID].Status != Full)		CBuffer_Instance[CBuffer_ID].Status = Empty;
+	}
 
 	//element removed
 	if(CBuffer_Instance[CBuffer_ID].Elements_count > 0)		CBuffer_Instance[CBuffer_ID].Elements_count -= 1;
