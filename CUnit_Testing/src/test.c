@@ -83,14 +83,18 @@ void test_CBuf_Init(void)
 void test_CBuf_Overwrite(void)
 {
    if (NULL != temp_file) {
-      temp = (rand() % (len1+1)) + 1;
+      temp = rand() % (len1+1);
       fprintf(temp_file, "\n\n\nCBuffer Overwrite Test\nWriting %d bytes in Buffer0\n", (len1+temp));
+      
+      fprintf(temp_file, "\n\n\nStarting to Write");
       for(test_i = 0; test_i < len1; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
       	CU_ASSERT(Success == CBuffer_Byte_Write(0, w_data[test_i]));
       	fprintf(temp_file, "\nWrote %c at %d in Buffer0", w_data[test_i], test_i);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Overwrite");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
@@ -103,14 +107,18 @@ void test_CBuf_Overwrite(void)
 void test_CBuf_Emptyread(void)
 {
    if (NULL != temp_file) {
-      temp = (rand() % (len1+1)) + 1;
+      temp = rand() % (len1+1);
 	  fprintf(temp_file, "\n\n\nCBuffer Emptyread Test\nReading %d bytes from Buffer0\n", (len1+temp));
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Read");
       for(test_i = 0; test_i < len1; test_i ++)
       {
       	CU_ASSERT(Success == CBuffer_Byte_Read(0, &r_data[test_i]));
         CU_ASSERT(w_data[test_i] == r_data[test_i]);
         fprintf(temp_file, "\nRead %c from %d in Buffer0", r_data[test_i], test_i);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Emptyread");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	CU_ASSERT(Empty == CBuffer_Byte_Read(0, &r_data[test_i]));
@@ -123,20 +131,26 @@ void test_CBuf_Partialfill(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-	  temp = (rand() % (len1-1)) + 1;
+	  temp = rand() % (len1-1);
 	  fprintf(temp_file, "\n\n\nCBuffer Partialfill Test\nWriting %d bytes in Buffer0\n", temp);
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Write");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
       	CU_ASSERT(Success == CBuffer_Byte_Write(0, w_data[test_i]));
       	fprintf(temp_file, "\nWrote %c at %d in Buffer0", w_data[test_i], test_i);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Read");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	CU_ASSERT(Success == CBuffer_Byte_Read(0, &r_data[test_i]));
         CU_ASSERT(w_data[test_i] == r_data[test_i]);
         fprintf(temp_file, "\nRead %c from %d in Buffer0", r_data[test_i], test_i);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Emptyread");
 	  for(test_i = 0; test_i < (len1 - temp); test_i ++)
       {
       	CU_ASSERT(Empty == CBuffer_Byte_Read(0, &r_data[test_i]));
@@ -178,8 +192,10 @@ void test_CBuf_Numberofelements(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-	  temp = (rand() % (len2+1)) + 1;
+	  temp = rand() % (len2+1);
 	  fprintf(temp_file, "\n\n\nBuffer Numberofelements Test\nWriting & Reading %d bytes of data from Buffer1\n", (len2+temp));
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Write");
 	  CU_ASSERT(0 == CBuffer_Elements(1));
       fprintf(temp_file, "\nNumber of Elements in Buffer1 are 0");
 	  for(test_i = 0; test_i < len2; test_i ++)
@@ -190,6 +206,8 @@ void test_CBuf_Numberofelements(void)
       	CU_ASSERT((test_i+1) == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", (test_i+1));
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Overwrite");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
@@ -198,6 +216,8 @@ void test_CBuf_Numberofelements(void)
       	CU_ASSERT(len2 == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", len2);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Read");
       for(test_i = 0; test_i < len2; test_i ++)
       {
       	CU_ASSERT(Success == CBuffer_Byte_Read(1, &r_data[test_i]));
@@ -206,6 +226,8 @@ void test_CBuf_Numberofelements(void)
         CU_ASSERT((len2-(test_i+1)) == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", (len2-(test_i+1)));
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Emptyread");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	CU_ASSERT(Empty == CBuffer_Byte_Read(1, &r_data[test_i]));
@@ -225,6 +247,8 @@ void test_CBuf_Runtimelengthchange(void)
 	  fprintf(temp_file, "\n\n\nBuffer Runtimelengthchange Test\nNew length of Buffer1 is %d\n", nlen);
 	  CU_ASSERT(0 == CBuffer_Resize(1, nlen));
 	  fprintf(temp_file, "\nWriting & Reading %d bytes of data from Buffer1\n", (nlen+temp));
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Write");
 	  CU_ASSERT(0 == CBuffer_Elements(1));
       fprintf(temp_file, "\nNumber of Elements in Buffer1 are 0");
 	  for(test_i = 0; test_i < nlen; test_i ++)
@@ -235,6 +259,8 @@ void test_CBuf_Runtimelengthchange(void)
       	CU_ASSERT((test_i+1) == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", (test_i+1));
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Overwrite");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	w_data[test_i] = Min_Data + (rand() % (Max_Data + 1));
@@ -243,6 +269,8 @@ void test_CBuf_Runtimelengthchange(void)
       	CU_ASSERT(nlen == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", nlen);
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Read");
       for(test_i = 0; test_i < nlen; test_i ++)
       {
       	CU_ASSERT(Success == CBuffer_Byte_Read(1, &r_data[test_i]));
@@ -251,6 +279,8 @@ void test_CBuf_Runtimelengthchange(void)
         CU_ASSERT((nlen-(test_i+1)) == CBuffer_Elements(1));
       	fprintf(temp_file, "\nNumber of Elements in Buffer1 are %d", (nlen-(test_i+1)));
 	  }
+	  
+	  fprintf(temp_file, "\n\n\nStarting to Emptyread");
 	  for(test_i = 0; test_i < temp; test_i ++)
       {
       	CU_ASSERT(Empty == CBuffer_Byte_Read(1, &r_data[test_i]));
