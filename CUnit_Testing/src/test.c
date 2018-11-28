@@ -131,7 +131,7 @@ void test_CBuf_Partialfill(void)
 {
 	Byte data;
    if (NULL != temp_file) {
-	  temp = rand() % (len1-1);
+	  temp = rand() % len1;
 	  fprintf(temp_file, "\n\n\nCBuffer Partialfill Test\nWriting %d bytes in Buffer0\n", temp);
 	  
 	  fprintf(temp_file, "\n\n\nStarting to Write");
